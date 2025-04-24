@@ -40,6 +40,7 @@ var solution = [
             let number = document.createElement("div");
             number.id = i;
             number.innerText = i;
+            number.addEventListener("click", selectNumber);
             number.classList.add("number");
             document.getElementById("digits").appendChild(number); 
         }    
@@ -49,10 +50,65 @@ var solution = [
             for(let c = 0; c < 9; c++)
             {
                 let tile = document.createElement("div");
-                tile.id = r.toString() + '-' + c.toString(); 
+                tile.id = r.toString() + '-' + c.toString();  
+                if (board[r][c] != '-') 
+                {
+                    tile.innerText = board[r][c];
+                    tile.classList.add("tile-start")
+                }
+                if (r == 2 || r == 5) 
+                {
+                    tile.classList.add("horizontal-line-2-5")    
+                }
+                if (c == 2 || c == 5) 
+                {
+                    tile.classList.add("vertical-line-2-5")        
+                }
+                if (r == 3 || r == 6) 
+                {
+                    tile.classList.add("horizontal-line-3-6")    
+                }
+                if (c == 3 || c == 6) 
+                {
+                    tile.classList.add("vertical-line-3-6")        
+                }
+                tile.addEventListener("click", selectTile);
                 tile.classList.add("tile");
                 document.getElementById("board").append(tile);
             }
         }
     }
 
+    function selectNumber() 
+    {
+        if (nunSelected != null) 
+        {
+            nunSelected.classList.remove("number-select");    
+        }
+        nunSelected = this;
+        nunSelected.classList.add("number-select");
+    }
+
+    function selectTile() 
+    {
+        if (nunSelected) 
+        {
+            if (this.innerText != '') 
+            {
+                return;    
+            }  
+            let coords = this.id.split("-");
+            let r = parseInt(coords[0]);
+            let c = parseInt(coords[1]);
+
+            if (solution[r][c] == nunSelected.id) 
+            {
+                this.innerText = nunSelected.id;     
+            }
+            else
+            {
+                erros += 1;
+                document.getElementById("error").innerText = erros;
+            }
+        }    
+    }
