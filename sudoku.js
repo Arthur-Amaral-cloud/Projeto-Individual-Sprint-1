@@ -1,6 +1,13 @@
 var nunSelected = null;
 var titleSelected = null;
-
+const URL = 'https://sudoku-api.vercel.app/api/dosuku';
+async function ChamarAPI ()
+{
+    const resp = await fetch(URL);
+    const obj = await resp.json();
+    console.log(obj);
+}
+ChamarAPI();
 var erros = 0;
 
 var board = [
