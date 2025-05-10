@@ -84,15 +84,65 @@
     gap: 40vh;
     margin-right: 10%;
 }
+.Nascimento-jogo
+{
+    background-color: #f0f8ff;
+    height: 100vh;
+}
 .Nascimentoflex
+{
+    display: flex;
+}
+.imgPencilRevista
+{
+    height: 80vh;
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    margin-left: 5vh;
+}
+
+.textsupright
 {
     font-family: sans-serif;
     text-align: justify;
     width: 50vw;
     font-size: 40px;
     margin-left: 5% ;
+    margin-right: 0;
 
     display: flex;
     justify-content: flex-end;
     align-items: center;
+    order: 2;
+}
+.flexitemexplosao
+{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.textsupmid
+{
+    font-size: 4vh;
+    text-align: center;
+}
+.Explosao-container
+{
+    background-image:url(../assets/Foto\ Borrada\ backgroud\ Home\ page\ editada.png);
+    background-size: auto;
+    height: 50vh;
+}
+.Ajuste-Margin
+{
+    padding-top: 3vh;
+}
+.Ajustewidth
+{
+    width: 120vw;
+}
+.Disseminacao-contaneir
+{
+    background-color: #f0f8ff;
+    height: 90vh;
 }

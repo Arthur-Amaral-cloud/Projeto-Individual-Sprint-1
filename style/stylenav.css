@@ -28,7 +28,7 @@ a
 }
 .logo
 {
-    height: 10vh;
+    height: 12vh;
     display: flex;
     justify-content: flex-start;
 }
@@ -53,6 +53,7 @@ a
     border-right: 2px solid #fff;
     display: flex;
     align-items: center;
+    border-radius: 2px;
 }
 .buttonJogar
 {

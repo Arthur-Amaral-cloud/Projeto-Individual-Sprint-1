@@ -1,0 +1,28 @@
+.Footer-div
+{
+    background-color: #4682b4;
+    height: 50vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.Flex-footer
+{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 5vh;
+}
+.logo-footer
+{
+    height: 20vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.AjusteBarraVertical
+{
+    height: 35vh;
+    border: 2px solid white;
+    border-radius: 6vh;
+}
