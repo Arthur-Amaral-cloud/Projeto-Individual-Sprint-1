@@ -15,7 +15,17 @@
 {
     background-color: #f0f8ff;
     height: 80vh;
+    width: 100%;
 }
+.NumerosLatinos
+{
+    margin: auto;
+}
+.flextextleft
+{
+    display: flex;
+}
+
 .firstcolumn
 {
     display: flex;
@@ -90,6 +100,10 @@
     height: 100vh;
 }
 .Nascimentoflex
+{
+    display: flex;
+}
+.Flextextright
 {
     display: flex;
 }
