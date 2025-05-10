@@ -3,9 +3,37 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="../style/styleLogin.css">
     <title>Sudoku - Login</title>
 </head>
 <body>
+    <div class="pai">
+        <div class="form">
+            <div class="text">
+                <h1><b>Login</b></h1>
+            </div>
+            <br><br>
+            <div class="inputs">
 
+                <label>Email</label>
+                <input type="text" placeholder="email@example.com" id="ipt_emailLogin">
+
+                <label>Senha</label>
+                <input type="password" placeholder="Senha" id="ipt_senhaLogin">
+
+            </div>
+            <div class="botao" onclick="login()"><button>Entrar</button></div>
+
+            <div class="cadastrolink">
+                <p>Ainda não tem uma conta? <br>
+                    <a href="cadastro.html">Cadastre-se aqui</a>
+                </p>
+            </div>
+
+        </div>
+        <div class="imagem">
+            <img src="../assets/Sudoku logo.png" alt="Sudoku-Logo">
+        </div>
+    </div>
 </body>
 </html>

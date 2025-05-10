@@ -1,11 +1,65 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="../style/stylenav.css">
+    <link rel="stylesheet" href="../style/styleHomepage.css">
+    <link rel="stylesheet" href="../style/stylesudokuFuncitonHowtoplay.css">
+    <script src="../js/SudokuExampleFunctionHowtoPlay.js"></script>
+    <link rel="stylesheet" href="../style/stylefooter.css">
     <title>Sudoku - Como Jogar</title>
 </head>
+
 <body>
-    
+    <header class="header">
+        <nav class="nav">
+            <a href="Home Page.html"><img src="../assets/Sudoku logo.png" alt="logo" class="logo"></a>
+            <ul class="nav-list">
+                <li><a href="Home Page.html"><b>História</b></a></li>
+                <div class="barraVertical"></div>
+                <li><a href="Como jogar.html"><b>Como Jogar</b></a></li>
+            </ul>
+            <a href="Login.html"><button class="buttonJogar"><b>Jogar!</b></button></a>
+        </nav>
+    </header>
+    <div class="HowtoPlayBoard">
+        <h2 class="titulo">Como Jogar Sudoku</h2>
+        <div class="imgBoard">
+            <div id="boardHowtoPlay">
+                <img src="../assets/SudokuExamplePáginaHowtoPlay.png" alt="Foto-sudoku-board" class="boardfoto">
+            </div>
+        </div>
+
+    </div>
+    </div>
+    <div class="origens">
+        <h3 class="subtitulo">Entendendo o Sudoku</h3>
+        <div class="board2">
+            <div class="flextextleft">
+                <p class="textsupleft">Sudoku é uma tabela 9x9 que contém 9 grades 3x3.
+                    O objetivo do jogo é preencher cada cédula com um número de 1 a 9, sem que haja repetição do número
+                    na mesma linha ou coluna ou grade.
+                    Se você cumprir toda a tabela com essas regras o jogo será finalizado e você ganhará.
+                    Vamos fazer um teste com a tabela do lado.</p>
+            </div>
+            <div class="sudoku-example">
+                <h3 id="error">Erros:0</h3>
+                <div id="boardPlay"></div>
+                <br>
+                <div id="digits"></div>
+            </div>
+        </div>
+    </div>
+        <footer class="Footer-div">
+        <div class="Flex-footer">
+            <a href="Home Page.html"><img src="../assets/Sudoku logo.png" alt="Sudoku-logo" class="logo-footer"></a>
+            <div class="barraVertical AjusteBarraVertical"></div>
+            <a href="https://github.com/Arthur-Amaral-cloud/Projeto-Individual-Sprint-1"><img
+                    src="../assets/Github icon fotter.png" alt="Github-logo" class="logo-footer"></a>
+        </div>
+    </footer>
 </body>
+
 </html>
