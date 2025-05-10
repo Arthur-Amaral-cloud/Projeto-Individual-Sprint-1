@@ -5,36 +5,72 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Sudoku - História</title>
-    <link rel="stylesheet" href="/style/stylenav.css">
+    <link rel="stylesheet" href="../style/stylenav.css">
+    <link rel="stylesheet" href="../style/styleSudoku.css">
+    <link rel="stylesheet" href="../style/styleHomepage.css">
+    <script src="../js/sudokuExamplenoFunction.js"></script>
 </head>
+
 <body>
-    <section class="barraNavigation">
-        <header>
-            <div class="barraContent">
-                <nav class="TopNav">
-                    <div class="right">
-                        <a href="Home Page.html">
-                            <img src="/assets/Sudoku logo.png" alt="Sudoku Logo" class="logo">
-                        </a>
-                    </div>
-                    <div class="center">
-                        <a href="Home Page.html">
-                            <b class="titlenav">História</b>
-                        </a>
-                        <div class="barraverticaltop"></div>
-                        <a href="Como jogar.html">
-                            <b class="titlenav">Como jogar</b>
-                        </a>
-                        
-                    </div>
-                    <div class="right">
-                        <a href="Login.html">
-                            <button class="buttonTop">Jogar</button>
-                        </a>
-                    </div>
-                </nav>
+    <header class="header">
+        <nav class="nav">
+            <a href="Home Page.html"><img src="../assets/Sudoku logo.png" alt="logo" class="logo"></a>
+            <ul class="nav-list">
+                <li><a href="Home Page.html"><b>História</b></a></li>
+                <div class="barraVertical"></div>
+                <li><a href="Como jogar.html"><b>Como Jogar</b></a></li>
+            </ul>
+            <a href="Cadastro.html"><button class="buttonJogar"><b>Jogar!</b></button></a>
+        </nav>
+    </header>
+    <div class="Historia-Board">
+        <h2 class="titulo">História do Sudoku</h2>
+        <br>
+        <div id="board"></div>
+    </div>
+    <div class="origens">
+        <h3 class="subtitulo">Origens Matemáticas</h3>
+        <div class="board2">
+            <p class="textsupleft">O conceito fundamental por trás do sudoku, a ideia de preencher uma grade com
+                números sem repeti-los em
+                linhas e colunas ,tem raízes nos quadrados latinos, um tipo de arranjo matemático estudado por Leonhard
+                Euler no século XVIII. No entanto, esses eram usados principalmente em contextos matemáticos, não como
+                passatempos.</p>
+            <div>
+                <div class="firstcolumn">
+                    <div class="tile2 borda">1</div>
+                    <div class="tile2 borda">2</div>
+                    <div class="tile2 borda">3</div>
+                    <div class="tile2 borda">4</div>
+                </div>
+                <div class="secondcolumn">
+                    <div class="tile2 borda">2</div>
+                    <div class="tile2 borda">1</div>
+                    <div class="tile2 borda">4</div>
+                    <div class="tile2 borda">3</div>
+                </div>
+                <div class="thirdcolumn">
+                    <div class="tile2 borda">3</div>
+                    <div class="tile2 borda">4</div>
+                    <div class="tile2 borda">1</div>
+                    <div class="tile2 borda">2</div>
+                </div>
+                <div class="fourcolumn">
+                    <div class="tile2 borda">4</div>
+                    <div class="tile2 borda">3</div>
+                    <div class="tile2 borda">2</div>
+                    <div class="tile2 borda">1</div>
+                </div>
             </div>
-        </header>
-    </section>
+        </div>
+    </div>
+    <div class="Nascimento-jogo">
+        <h3 class="subtitulo">Nascimento do Jogo Moderno</h3>
+        <div class="Nascimentoflex">
+            <p class="textsupright">O sudoku como jogo de lógica moderno foi criado por Howard Garns, um arquiteto americano aposentado. Ele inventou o jogo nos Estados Unidos, onde foi publicado pela primeira vez em 1979 sob o nome de "Number Place", na revista Dell Pencil Puzzles and Word Games. O jogo já tinha o formato 9x9 e as regras básicas: preencher a grade com números de 1 a 9, sem repetições em linhas, colunas ou subgrades 3x3.</p>
+            <img src="../assets/Revista Homepage.png" alt="Revista-Pencil-Puzzles-and-word-games" class="imgPencilRevista">    
+        </div>
+    </div>
 </body>
+
 </html>
