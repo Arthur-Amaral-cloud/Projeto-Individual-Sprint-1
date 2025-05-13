@@ -3,19 +3,26 @@
     background-color: #f0f8ff;
     font-family: sans-serif;
     font-size: 5vh;
-    height: 70vh;
+    height: auto;
+    width: auto;
+
+    display: flex;
+    flex-direction: column;
+    align-items: center;
 }
 .titulo
 {
-    display: flex;
-    justify-content: center;
-    padding-top: 2vh;
+    margin-top: 15vh;
 }
-.origens
+.origem-flexbox
 {
     background-color: #f0f8ff;
-    height: 80vh;
-    width: 100%;
+    height: auto;
+    width: auto;
+
+    display: flex;
+    flex-direction: column;
+    align-items: center;
 }
 .NumerosLatinos
 {
@@ -70,9 +77,6 @@
 {
     font-family: sans-serif;
     font-size: 6vh;
-    display: flex;
-    justify-content: center;
-    align-items: flex-start;
     margin-bottom: 10vh;
 }
 .textsupleft
@@ -81,27 +85,29 @@
     text-align: justify;
     width: 50vw;
     font-size: 40px;
-    margin-left: 5% ;
-
-    display: flex;
-    justify-content: flex-start;
-    align-items: center;
 }
 .board2
 {
     display: flex;
-    align-items: center;
-    gap: 40vh;
-    margin-right: 10%;
+    justify-content: space-between;
+    gap: 10rem;
 }
 .Nascimento-jogo
 {
     background-color: #f0f8ff;
-    height: 100vh;
+    height: auto;
+    width: auto;
+
+    display: flex;
+    flex-direction: column;
+    align-items: center;
 }
 .Nascimentoflex
 {
     display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 10rem;
 }
 .Flextextright
 {
@@ -130,12 +136,6 @@
     align-items: center;
     order: 2;
 }
-.flexitemexplosao
-{
-    display: flex;
-    justify-content: center;
-    align-items: center;
-}
 .textsupmid
 {
     font-size: 4vh;
@@ -146,6 +146,10 @@
     background-image:url(../assets/Foto\ Borrada\ backgroud\ Home\ page\ editada.png);
     background-size: auto;
     height: 50vh;
+
+    display: flex;
+    flex-direction: column;
+    align-items: center;
 }
 .Ajuste-Margin
 {
@@ -155,22 +159,44 @@
 {
     width: 120vw;
 }
-.Disseminacao-contaneir
+.Disseminacao-Flexbox
 {
     background-color: #f0f8ff;
-    height: 90vh;
+    height: auto;
+    width: auto;
+
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+.Content-Disseminacao
+{
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+}
+.imgright-Flexbox
+{
+    display: flex;
 }
 .HowtoPlayBoard
 {
     background-color: #f0f8ff;
     font-family: sans-serif;
     font-size: 5vh;
-    height: 70vh;
+    height: auto;
+    width: auto;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
 }
 .imgBoard
 {
-    display: flex;
-    justify-content: center;
     margin-top: 5vh;
     margin-bottom: 5vh;
+}
+.sudoku-example
+{
+    margin-bottom: 1.875rem;
 }
