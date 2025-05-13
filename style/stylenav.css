@@ -34,11 +34,12 @@ a {
     height: 12vh;
     display: flex;
     justify-content: flex-start;
+    margin-left: 3rem;
 }
 
 .nav-list {
     display: flex;
-    gap: 5rem;
+    gap: 3rem;
     list-style: none;
     align-items: center;
     justify-content: center;
@@ -51,11 +52,11 @@ a {
 }
 
 .barraVertical {
-    height: 10vh;
-    border-right: 2px solid #fff;
+    height: 8vh;
+    border-right: 0.125rem solid #fff;
     display: flex;
     align-items: center;
-    border-radius: 2px;
+    border-radius: 0.125rem;
 }
 
 .buttonJogar {
@@ -63,6 +64,7 @@ a {
     padding-top: 1.5vh;
     padding-right: 2vh;
     padding-left: 2vh;
+    margin-right: 3rem;
     border-radius: 100px;
     background-color: #4682b4;
     font-family: sans-serif;
@@ -78,7 +80,7 @@ a {
     background-color: #afeeee;
     color: #fff;
 }
-
-.logo-config {
-    width: 10vh;
+.texto-a:hover
+{
+    color: #fff;
 }
