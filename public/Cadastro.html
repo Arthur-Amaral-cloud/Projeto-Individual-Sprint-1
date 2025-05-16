@@ -9,41 +9,73 @@
 </head>
 
 <body>
-    <div class="Container-main">
-        <div class="Imagem-flexbox">
-            <div class="imagem"><a href="Home Page.html"><img src="../assets/Sudoku logo.png" alt="Foto-logo" class="logo-config"></a></div>
+    <div class="pai-login-cadastro">
+        <div class="icon-content">
+            <a href="Home Page.html"><img src="../assets/Sudoku logo.png" alt="Sudoku-logo" class="img-config"></a>
         </div>
-        <div class="Login-flexbox">
-            <div class="titulo-tela"><b>Cadastro</b></div>
-            <div class="Container-campo">
-                <div class="textos-login"><b>Email:</b></div>
-                <div><input type="text"></div>
+        <div class="login-content">
+            <div class="titulo-box">
+                <h2 class="titulo"><b>Cadastro</b></h2>
             </div>
-            <div class="Container-campo">
-                <div class="textos-login"><b>Username:</b></div>
-                <div><input type="text"></div>
+            <div class="full-box-content">
+                <div class="box-on-left">
+                    <div class="box-container">
+                        <div class="text-box">
+                            <p>Email:</p>
+                        </div>
+                        <div class="input-box">
+                            <input type="text">
+                        </div>
+                    </div>
+                    <div class="box-container">
+                        <div class="text-box">
+                            <p>Username:</p>
+                        </div>
+                        <div class="input-box">
+                            <input type="text">
+                        </div>
+                    </div>
+                    <div class="box-container">
+                        <div class="text-box">
+                            <p>Senha:</p>
+                        </div>
+                        <div class="input-box" oninput="verficar()" id="ipt_senha">
+                            <input type="text">
+                        </div>
+                    </div>
+                </div>
+                <div class="box-on-left">
+                    <div class="box-container">
+                        <div class="text-box">
+                            <p>Confirmar Senha:</p>
+                        </div>
+                        <div class="input-box">
+                            <input type="text">
+                        </div>
+                    </div>
+                    <div class="check-box">
+                        <div class="check-title" id="div_text_title">Sua senha deve conter:</div>
+                        <div class="check-subtitle" id="div_text_caps">*Letra Maiúscula Ex: A</div>
+                        <div class="check-subtitle" id="div_text_min">*Letra Minúscula Ex: a</div>
+                        <div class="check-subtitle" id="div_text_num">*Número Ex: 0</div>
+                        <div class="check-subtitle" id="div_text_char">*Caractere Especial Ex: @</div>
+                    </div>
+                </div>
             </div>
-            <div class="Container-campo">
-                <div class="textos-login"><b>Senha:</b></div>
-                <div><input type="text"></div>
-            </div>
-            <div class="Container-campo">
-                <div class="textos-login"><b>Confirmar Senha:</b></div>
-                <div><input type="text"></div>
-            </div>
-        </div>
-        <div>Sua senha deve conter:</div>
-        <div>*Letra Maiúscula Ex: A</div>
-        <div>*Letra Minúscula Ex: a</div>
-        <div>*Número Ex: 1</div>
-        <div>Caractere Especial Ex:@</div>
-        <div class="Container-button"><button><b>Entrar</b></button></div>
-        <div class="Container-text">
-            <p><b></b>Caso já tenha um cadastro. <a href="Login.html">Logue por aqui</a></b></p>
 
+            <div class="button-box">
+                <button>Entrar</button>
+            </div>
+            <div class="redirect-box">
+                <p>Já possui uma conta. <a href="Login.html">Faça Login</a></p>
+            </div>
         </div>
-
     </div>
 </body>
-
 </html>
+<script>
+    function verficar() 
+    {
+        
+    }
+</script>
