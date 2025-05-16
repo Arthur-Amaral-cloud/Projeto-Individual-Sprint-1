@@ -168,4 +168,10 @@ a:hover {
     padding-top: 2vh;
     font-family: sans-serif;
     font-size: 3vh;
+    color: #4682b4;
+}
+#div_text_confirmar_senha
+{
+    margin-top: 1vh;
+    font-size: 2vh;
 }
