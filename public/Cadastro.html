@@ -39,8 +39,8 @@
                         <div class="text-box">
                             <p>Senha:</p>
                         </div>
-                        <div class="input-box" oninput="verficar()" id="ipt_senha">
-                            <input type="text">
+                        <div class="input-box">
+                            <input type="password" id="ipt_senha" oninput="verficar()">
                         </div>
                     </div>
                 </div>
@@ -50,7 +50,8 @@
                             <p>Confirmar Senha:</p>
                         </div>
                         <div class="input-box">
-                            <input type="text">
+                            <input type="password" id="ipt_confirmar_senha" oninput="comparar()">
+                            <div id="div_text_confirmar_senha"></div>
                         </div>
                     </div>
                     <div class="check-box">
@@ -77,5 +78,16 @@
     function verficar() 
     {
         
+    }
+    function comparar() 
+    { 
+        if (ipt_senha.value == ipt_confirmar_senha.value) 
+        {
+            div_text_confirmar_senha.innerHTML = `<span style="color:green">As senhas Conferem</span>`;  
+        }
+        else
+        {
+            div_text_confirmar_senha.innerHTML = `<span style="color:red">As senhas não estão iguais</span>`
+        }
     }
 </script>

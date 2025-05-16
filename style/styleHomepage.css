@@ -3,8 +3,8 @@
     background-color: #f0f8ff;
     font-family: sans-serif;
     font-size: 5vh;
-    height: auto;
-    width: auto;
+    height: 100vh;
+    width: 100%;
 
     display: flex;
     flex-direction: column;
@@ -13,12 +13,13 @@
 .titulo
 {
     margin-top: 15vh;
+    margin-bottom: 7.5vh;
 }
 .origem-flexbox
 {
     background-color: #f0f8ff;
-    height: auto;
-    width: auto;
+    height: 100vh;
+    width: 100%;
 
     display: flex;
     flex-direction: column;
@@ -26,36 +27,37 @@
 }
 .NumerosLatinos
 {
-    margin: auto;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
 }
 .flextextleft
 {
     display: flex;
 }
-
 .firstcolumn
 {
     display: flex;
-    justify-content: flex-end;
-    align-items: flex-start;
+    justify-content: flex-start;
+    align-items: center;
 }
 .secondcolumn
 {
     display: flex;
-    justify-content: flex-end;
-    align-items: flex-end;
+    justify-content: flex-start;
+    align-items: center;
 }
 .thirdcolumn
 {
     display: flex;
-    justify-content: flex-end;
-    align-items: flex-end;
+    justify-content: flex-start;
+    align-items: center;
 }
 .fourcolumn
 {
     display: flex;
-    justify-content: flex-end;
-    align-items: flex-end;
+    justify-content: flex-start;
+    align-items: center;
 }
 .borda
 {
@@ -78,6 +80,8 @@
     font-family: sans-serif;
     font-size: 6vh;
     margin: 3rem;
+    color: #003366;
+    font-weight: bold;
 }
 .textsupleft
 {
@@ -90,13 +94,14 @@
 {
     display: flex;
     justify-content: space-between;
-    gap: 10rem;
+    align-items: center;
+    gap: 5vw;
 }
 .Nascimento-jogo
 {
     background-color: #f0f8ff;
-    height: auto;
-    width: auto;
+    height: 100vh;
+    width: 100%;
 
     display: flex;
     flex-direction: column;
@@ -113,13 +118,15 @@
 {
     display: flex;
 }
+.imgleft-Flexbox
+{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
 .imgPencilRevista
 {
-    height: 80vh;
-    display: flex;
-    justify-content: flex-start;
-    align-items: center;
-    margin-left: 5vh;
+    height: 75vh;
 }
 
 .textsupright
@@ -140,12 +147,13 @@
 {
     font-size: 4vh;
     text-align: center;
+    color: #333333;
 }
 .Explosao-container
 {
     background-image:url(../assets/Foto\ Borrada\ backgroud\ Home\ page\ editada.png);
     background-size: auto;
-    height: 50vh;
+    height: 100vh;
 
     display: flex;
     flex-direction: column;
@@ -162,8 +170,8 @@
 .Disseminacao-Flexbox
 {
     background-color: #f0f8ff;
-    height: auto;
-    width: auto;
+    height: 100vh;
+    width: 100%;
 
     display: flex;
     flex-direction: column;
