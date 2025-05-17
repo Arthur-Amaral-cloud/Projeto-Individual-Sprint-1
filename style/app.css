@@ -11,7 +11,7 @@
     --red: #e91e63;
     --black: #000;
 
-    --nav-size: 70px;
+    --nav-size: 12vh;
     --sudoku-cell-size: 50px;
 
     --border-radius: 10px;
@@ -55,6 +55,11 @@ input
     font-family: "Potta One", system-ui;
     border: 2px solid var(--bg-main);
     color: var(--color-txt);
+}
+.logo
+{
+    height: 12vh;
+    padding-top: 1vh;
 }
 
 input:hover, input:focus 
@@ -217,4 +222,71 @@ nav
     {
         transform: translateX(0);
     }
+}
+
+.main-game 
+{
+    display: flex;
+    height: 100%;
+    flex-direction: column;
+    justify-content: space-between;
+    padding: 30px 0;
+    transform: translateX(100%);
+    transition: transform .3s ease-in-out;
+}
+
+.main-game.active
+{
+    transform: translateX(0);
+}
+.main-sudoku-grid
+{
+    display: grid;
+    gap:  var(--gap);;
+    grid-template-columns: repeat(9, auto);
+}
+.main-grid-cell
+{
+    height: var(--sudoku-cell-size);
+    width: var(--sudoku-cell-size);
+    border-radius: var(--border-radius);
+    background-color: var(--bg-main);
+    color:  var(--blue);
+    display: grid;
+    place-items: center;
+    font-size:  var(--font-size);
+    cursor: pointer;
+}
+
+.main-grid-cell.filled
+{
+    background-color: var(--filled-bg);
+    color: var(--filled-color);
+}
+
+.main-grid-cell.selected
+{
+    background-color: var(--blue);;
+    color: var(--white);
+}
+
+.main-grid-cell:hover
+{
+    border: 2px solid var(--blue);
+}
+
+.main-grid-cell:hover
+{
+    border: 3px solid var(--blue);
+}
+
+.drak .main-grid-cell:hover
+{
+    border: 1px solid var(--blue);
+}
+
+.main-grid-cell.err
+{
+    background-color: var(--red);
+    color: var(--white);
 }
