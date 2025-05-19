@@ -17,31 +17,25 @@ const newGrid = (size) => {
 const isColSafe = (grid, col, value) => {
     for(let row = 0; row < CONSTANT.GRID_SIZE; row++)
     {
-        if (grid[row][col] === value) 
-        {
-            return false;    
-        }
+        if (grid[row][col] === value) return false;      
     }
     return true;
 }
 
 // Checar duplicidade de números na linha
 const isRowSafe = (grid, row, value) => {
-    for(let col = 0; col < CONSTANT.GRID_SIZE; row++)
+    for (let col = 0; col < CONSTANT.GRID_SIZE; col++) 
     {
-        if (grid[row][col] === value) 
-        {
-            return false;    
-        }
-        return true;
+        if (grid[row][col] === value) return false;
     }
+    return true;
 }
 
 //Checar duplicidade de números na grade 3x3
 const isBoxSafe = (grid, box_row, box_col, value) => {
-    for(let col = 0; col < CONSTANT.BOX_SIZE; col++)
+    for(let row = 0; row < CONSTANT.BOX_SIZE; row++)
     {
-        for(let row = 0; row < CONSTANT.BOX_SIZE; row++)
+        for(let col = 0; col < CONSTANT.BOX_SIZE; col++)
         {
             if (grid[row + box_row][col + box_col] === value) 
             {
