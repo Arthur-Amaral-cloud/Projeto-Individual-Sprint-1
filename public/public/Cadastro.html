@@ -1,0 +1,190 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="shortcut icon" href="../assets/Sudoku logo.png" type="image/x-icon">
+    <link rel="stylesheet" href="../style/styleCadastro.css">
+    <title>Sudoku - Cadastro</title>
+</head>
+
+<body>
+    <div class="pai-login-cadastro">
+        <div class="icon-content">
+            <a href="Home Page.html"><img src="../assets/Sudoku logo.png" alt="Sudoku-logo" class="img-config"></a>
+        </div>
+        <div class="login-content">
+            <div class="titulo-box">
+                <h2 class="titulo"><b>Cadastro</b></h2>
+            </div>
+            <div class="full-box-content">
+                <div class="box-on-left">
+                    <div class="box-container">
+                        <div class="text-box">
+                            <p>Email:</p>
+                        </div>
+                        <div class="input-box">
+                            <input type="text">
+                        </div>
+                    </div>
+                    <div class="box-container">
+                        <div class="text-box">
+                            <p>Username:</p>
+                        </div>
+                        <div class="input-box">
+                            <input type="text">
+                        </div>
+                    </div>
+                    <div class="box-container">
+                        <div class="text-box">
+                            <p>Senha:</p>
+                        </div>
+                        <div class="input-box">
+                            <input type="password" id="ipt_senha" oninput="verficar()">
+                        </div>
+                    </div>
+                </div>
+                <div class="box-on-right">
+                    <div class="box-container">
+                        <div class="text-box">
+                            <p>Confirmar Senha:</p>
+                        </div>
+                        <div class="input-box">
+                            <input type="password" id="ipt_confirmar_senha" oninput="comparar()">
+                            <div id="div_text_confirmar_senha"></div>
+                        </div>
+                    </div>
+                    <div class="check-box">
+                        <div class="check-title" id="div_text_title">.</div>
+                        <div class="check-subtitle" id="div_text_caps">.</div>
+                        <div class="check-subtitle" id="div_text_min">.</div>
+                        <div class="check-subtitle" id="div_text_num">.</div>
+                        <div class="check-subtitle" id="div_text_char">.</div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="button-box">
+                <button>Cadastrar</button>
+            </div>
+            <div class="redirect-box">
+                <p>Já possui uma conta. <a href="Login.html">Faça Login</a></p>
+            </div>
+        </div>
+    </div>
+</body>
+</html>
+<script>
+    function verficar() 
+    {
+        var senha = document.getElementById("ipt_senha").value;
+        var valida_letra_caps = ['A', 'B', 'C', 'D', 'E', 'F', 'G','H', 'I', 'J', 'K', 'L', 'M', 'N','O', 'P', 'Q', 'R', 'S', 'T', 'U','V', 'W', 'X', 'Y', 'Z'];
+        var valida_letra_min = ['a', 'b', 'c', 'd', 'e', 'f', 'g','h', 'i', 'j', 'k', 'l', 'm', 'n','o', 'p', 'q', 'r', 's', 't', 'u','v', 'w', 'x', 'y', 'z'];
+        var valida_numeros = ['1','2','3','4','5','6','7','8','9','0'];
+        var valida_caracteres_especiais = ['!', '@', '#', '$', '%', '^', '&', '*', '(', ')','-', '_', '=', '+', '[', ']', '{', '}','|',';', ':', '\'', '"', ',', '<', '.', '>', '/', '?'];
+        if (senha == '') 
+        {
+            
+        }
+        else
+        {
+                div_text_title.innerHTML = `Sua senha deve conter:` 
+                div_text_title.style = `color:#2e2e2e; text-weight:bold`
+                div_text_caps.innerHTML = `*Letra Maiúscula Ex: A`;
+                div_text_caps.style = `color:#ff6f61`;
+                div_text_min.innerHTML = `*Letra Minúscula Ex: a`;
+                div_text_min.style = `color:#ff6f61`;
+                div_text_num.innerHTML = `*Número Ex: 0`;
+                div_text_num.style = `color:#ff6f61`;
+                div_text_char.innerHTML = `*Caractere Especial Ex: @`;
+                div_text_char.style = `color:#ff6f61`
+            
+            
+            for(var a = 0; a < senha.length; a++)
+            {
+                for(var b = 0; b < valida_letra_caps.length; b++)
+                {
+                    if (senha[a] == valida_letra_caps[b]) 
+                    {
+                        div_text_caps.innerHTML = `*Letra Maiúscula Ex: A`;
+                        div_text_caps.style = `color:#a8d5ba`;
+                        break;
+                    }
+                }
+                if (senha[a] == valida_letra_caps[b]) 
+                {
+                    break;    
+                }
+            }
+            for(var c = 0; c < senha.length; c++)
+            {
+                for(var d = 0; d < valida_letra_min.length; d++)
+                {
+                    if (senha[c] == valida_letra_min[d]) 
+                    {
+                        div_text_min.innerHTML = `*Letra Minúscula Ex: a`;
+                        div_text_min.style = `color:#a8d5ba`;
+                        break;
+                    }
+                }
+                if (senha[c] == valida_letra_min[d]) 
+                {
+                    break;    
+                }
+            }
+            for(var e = 0; e < senha.length; e++)
+            {
+                for(var f = 0; f < valida_numeros.length; f++)
+                {
+                    if (senha[e] == valida_numeros[f]) 
+                    {
+                        div_text_num.innerHTML = `*Número Ex: 0`;
+                        div_text_num.style = `color:#a8d5ba`;
+                        break;
+                    }
+                }
+                if (senha[e] == valida_numeros[f]) 
+                {
+                    ax_valida_numero = true;
+                    break;    
+                }
+            }
+            for(var g = 0; g < senha.length; g++)
+            {
+                for(var h = 0; h < valida_caracteres_especiais.length; h++)
+                {
+                    if (senha[g] == valida_caracteres_especiais[h]) 
+                    {
+                        div_text_char.innerHTML = `*Caractere Especial Ex: @`;
+                        div_text_char.style = `color:#a8d5ba`;
+                        break;
+                    }
+                }
+                if (senha[g] == valida_caracteres_especiais[h]) 
+                {
+                    break;    
+                }
+            }
+        }
+    }
+    function comparar() 
+    { 
+        if (ipt_confirmar_senha.value == '' || ipt_senha.value == '') 
+        {
+            div_text_confirmar_senha.innerHTML = '';    
+        }
+        else
+        {
+           if (ipt_senha.value == ipt_confirmar_senha.value) 
+            {
+                div_text_confirmar_senha.innerHTML = `<span style="color:#a8d5ba">As senhas conferem</span>`;  
+            }
+            else
+            {
+            div_text_confirmar_senha.innerHTML = `<span style="color:#ff6f61">As senhas não estão iguais</span>`;
+            } 
+        }
+        
+    }
+</script>
