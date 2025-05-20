@@ -25,6 +25,16 @@
     flex-direction: column;
     align-items: center;
 }
+.Tutorial-box
+{
+    background-color: #f0f8ff;
+    height: 110vh;
+    width: 100%;
+
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
 .NumerosLatinos
 {
     display: flex;
@@ -88,7 +98,7 @@
     font-family: sans-serif;
     text-align: justify;
     width: 50vw;
-    font-size: 2.5rem;
+    font-size: 2rem;
 }
 .board2
 {
@@ -106,6 +116,10 @@
     display: flex;
     flex-direction: column;
     align-items: center;
+}
+.margin-config
+{
+    padding-top: 5vh;
 }
 .Nascimentoflex
 {
@@ -134,7 +148,7 @@
     font-family: sans-serif;
     text-align: justify;
     width: 50vw;
-    font-size: 40px;
+    font-size: 2rem;
     margin-left: 5% ;
     margin-right: 0;
 

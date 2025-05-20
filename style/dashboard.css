@@ -1,0 +1,141 @@
+:root {
+    --bg-main: #f0f2f5;
+    --bg-body: #f0f8ff;
+    --color-txt: #000;
+    --filled-color: #000;
+    --filled-bg: #caf0f8;
+
+    --white: #fff;
+    --blue: #00aeef;
+    --red: #e91e63;
+    --black: #000;
+
+    --nav-size: 70px;
+    --sudoku-cell-size: 50px;
+
+    --border-radius: 10px;
+
+    --space-y: 20px;
+
+    --gap: 5px;
+
+    --font-size: 1.5rem;
+    --font-size-lg: 2rem;
+    --font-size-xl: 3rem;
+}
+
+.dark {
+    --bg-main: #2a2a38;
+    --bg-body: #1a1a2e;
+    --color-txt: #6a6a6a;
+    --filled-color: #4f4f63;
+    --filled-bg: #000;
+}
+
+* {
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+    -webkit-tap-highlight-color: transparent;
+}
+
+body {
+    font-family: "Potta One", system-ui;
+    height: 100vh;
+    background-color: var(--bg-body);
+    overflow-x: hidden;
+    user-select: none;
+}
+
+.logo {
+    height: 70px;
+    padding-top: 1vh;
+}
+.icon-perfil
+{
+    height: 70px;
+    padding-top: 1vh;
+}
+nav {
+    background-color: var(--bg-body);
+    color: var(--color-txt);
+    position: fixed;
+    top: 0;
+    width: 100%;
+    box-shadow: 5px 2px #9fa4aa59;
+    z-index: 100;
+}
+
+.nav-container {
+    max-width: 1280px;
+    margin: auto;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 0 40px;
+    height: var(--nav-size);
+}
+
+.nav-logo {
+    font-size: var(--font-size-lg);
+    color: var(--blue);
+}
+
+.dark-mode-toggle {
+    color: var(--blue);
+    font-size: var(--font-size-lg);
+    cursor: pointer;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 5vw;
+}
+.bx-user-circle
+{
+    color: var(--blue);
+    cursor: pointer;
+    font-weight: 400;
+}
+
+.bxs-sun {
+    display: none;
+}
+
+.bxs-moon {
+    display: inline-block;
+}
+
+.dark .bxs-sun {
+    display: inline-block;
+}
+
+.dark .bxs-moon {
+    display: none;
+}
+
+.main {
+    height: 100vh;
+    padding-top: var(--nav-size);
+    display: grid;
+    place-items: center;
+}
+.dashboard-screen
+{
+    height: 100%;
+    width: 100%;
+    background-color: var(--bg-body);
+    padding-top: 70px;
+
+    display: flex;
+    justify-content: center;
+    align-items: flex-end;
+}
+.dashboard-pai
+{
+    width: 80%;
+    height: 90%;
+    border-radius: 20px 20px 0px 0px;
+    padding: 2rem;
+    background-color: #00aeef;
+}
