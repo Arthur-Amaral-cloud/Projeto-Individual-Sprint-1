@@ -402,8 +402,8 @@ document.querySelector('#btn-delete').addEventListener('click', () => {
 //
 
 const init = () => {
-    const darkmode = JSON.parse(localStorage.getItem('darkmode'));
-    document.body.classList.add(darkmode ? 'dark' : 'light');
+    // const darkmode = JSON.parse(localStorage.getItem('darkmode'));
+    // document.body.classList.add(darkmode ? 'dark' : 'light');
 
     const game = getGameInfo();
     document.querySelector('#btn-continue').style.display = game ? 'grid' : 'none';

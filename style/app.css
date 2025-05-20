@@ -1,6 +1,6 @@
 :root {
     --bg-main: #f0f2f5;
-    --bg-body: #fff;
+    --bg-body: #f0f8ff;
     --color-txt: #000;
     --filled-color: #000;
     --filled-bg: #caf0f8;
@@ -57,6 +57,11 @@ input {
     height: 70px;
     padding-top: 1vh;
 }
+.icon-perfil
+{
+    height: 70px;
+    padding-top: 1vh;
+}
 
 input:hover,
 input:focus {
@@ -78,7 +83,7 @@ nav {
     position: fixed;
     top: 0;
     width: 100%;
-    box-shadow: 5px 2px var(--bg-main);
+    box-shadow: 5px 2px #9fa4aa59;
     z-index: 100;
 }
 
@@ -101,6 +106,17 @@ nav {
     color: var(--blue);
     font-size: var(--font-size-lg);
     cursor: pointer;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 5vw;
+}
+.bx-user-circle
+{
+    color: var(--blue);
+    cursor: pointer;
+    font-weight: 400;
 }
 
 .bxs-sun {
