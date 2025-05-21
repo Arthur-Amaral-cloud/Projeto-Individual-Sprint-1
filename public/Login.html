@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="shortcut icon" href="../assets/Sudoku logo.png" type="image/x-icon">
+    <link rel="stylesheet" href="../style/styleLogin.css">
+    <title>Sudoku - Login</title>
+</head>
+
+<body>
+    <div class="pai-login-cadastro">
+        <div class="login-content">
+            <div class="titulo-box">
+                <h2 class="titulo"><b>Login</b></h2>
+            </div>
+            <div class="box-container">
+                <div class="text-box">
+                    <p>Email:</p>
+                </div>
+                <div class="input-box">
+                    <input type="text" id="ipt_email_login">
+                </div>
+            </div>
+            <div class="box-container">
+                <div class="text-box">
+                    <p>Senha:</p>
+                </div>
+                <div class="input-box">
+                    <input type="text" id="ipt_senha_login">
+                </div>
+            </div>
+            <div class="button-box">
+                <button onclick="entrar()">Entrar</button>
+            </div>
+            <div class="redirect-box">
+                <p>Se não possue um login. <a href="Cadastro.html">Cadastra-se</a></p>
+            </div>
+        </div>
+        <div class="icon-content">
+            <a href="index.html"><img src="../assets/Sudoku logo.png" alt="Sudoku-logo" class="img-config"></a>
+        </div>
+    </div>
+</body>
+</html>
+<script>
+    function entrar() {
+
+        var emailVar = ipt_email_login.value;
+        var senhaVar = ipt_senha_login.value;
+
+        if (emailVar == "" || senhaVar == "") {
+            alert("Mensagem de erro para todos os campos em branco");
+            return;
+        }
+        console.log("FORM LOGIN: ", emailVar);
+        console.log("FORM SENHA: ", senhaVar);
+
+        fetch("/usuarios/autenticar", {
+            method: "POST",
+            headers: {
+                "Content-Type": "application/json"
+            },
+            body: JSON.stringify({
+                emailServer: emailVar,
+                senhaServer: senhaVar
+            })
+        }).then(function (resposta) {
+            console.log("ESTOU NO THEN DO entrar()!")
+
+            if (resposta.ok) {
+                console.log(resposta);
+
+                resposta.json().then(json => {
+                    console.log(json);
+                    console.log(JSON.stringify(json));
+                    sessionStorage.EMAIL_USUARIO = json.email;
+                    sessionStorage.NOME_USUARIO = json.username;
+                    sessionStorage.ID_USUARIO = json.idplayer;
+
+                    setTimeout(function () {
+                        window.location = "sudoku.html";
+                    }, 1000); // apenas para exibir o loading
+
+                });
+
+            } else {
+
+                console.log("Houve um erro ao tentar realizar o login!");
+
+                resposta.text().then(texto => {
+                    console.error(texto);
+                });
+            }
+
+        }).catch(function (erro) {
+            console.log(erro);
+        })
+    }
+</script>
