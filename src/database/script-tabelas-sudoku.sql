@@ -32,3 +32,6 @@ constraint FKAmigoPlayer
 foreign key (FkAmigo) references player(idPlayer),
 DtAmizade datetime default current_timestamp
 );
+
+select * from player;
+
