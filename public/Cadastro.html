@@ -4,15 +4,15 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="shortcut icon" href="../assets/Sudoku logo.png" type="image/x-icon">
-    <link rel="stylesheet" href="../style/styleCadastro.css">
+    <link rel="shortcut icon" href="assets/Sudoku logo.png" type="image/x-icon">
+    <link rel="stylesheet" href="style/styleCadastro.css">
     <title>Sudoku - Cadastro</title>
 </head>
 
 <body>
     <div class="pai-login-cadastro">
         <div class="icon-content">
-            <a href="index.html"><img src="../assets/Sudoku logo.png" alt="Sudoku-logo" class="img-config"></a>
+            <a href="index.html"><img src="assets/Sudoku logo.png" alt="Sudoku-logo" class="img-config"></a>
         </div>
         <div class="login-content">
             <div class="titulo-box">
@@ -22,37 +22,39 @@
                 <div class="box-on-left">
                     <div class="box-container">
                         <div class="text-box">
-                            <p>Email:</p>
+                            <p>Email</p>
                         </div>
                         <div class="input-box" >
-                            <input type="text" id="ipt_email">
+                            <input type="text" id="ipt_email" oninput="emailverify()">
+                            <div id="div_error_email" class="text-error-cadastro"></div>
                         </div>
                     </div>
                     <div class="box-container">
                         <div class="text-box">
-                            <p>Username:</p>
+                            <p>Username</p>
                         </div>
                         <div class="input-box">
-                            <input type="text" id="ipt_username">
+                            <input type="text" id="ipt_username" oninput="usernameverify()">
+                            <div id="div_error_username" class="text-error-cadastro"></div>
                         </div>
                     </div>
                     <div class="box-container">
                         <div class="text-box">
-                            <p>Senha:</p>
+                            <p>Senha</p>
                         </div>
                         <div class="input-box">
-                            <input type="password" id="ipt_senha" oninput="verficar()">
+                            <input type="password" id="ipt_senha" oninput="senhaverify()">
                         </div>
                     </div>
                 </div>
                 <div class="box-on-right">
                     <div class="box-container">
                         <div class="text-box">
-                            <p>Confirmar Senha:</p>
+                            <p>Confirmar Senha</p>
                         </div>
                         <div class="input-box">
-                            <input type="password" id="ipt_confirmar_senha" oninput="comparar()">
-                            <div id="div_text_confirmar_senha"></div>
+                            <input type="password" id="ipt_confirmar_senha" oninput="confirmasenhaverify()">
+                            <div id="div_text_confirmar_senha" class="text-error-cadastro"></div>
                         </div>
                     </div>
                     <div class="check-box">
@@ -66,7 +68,7 @@
             </div>
 
             <div class="button-box">
-                <button onclick="cadastrar()">Cadastrar</button>
+                <button onclick="verifycampos()">Cadastrar</button>
             </div>
             <div class="redirect-box">
                 <p>Já possui uma conta. <a href="Login.html">Faça Login</a></p>
@@ -76,7 +78,39 @@
 </body>
 </html>
 <script>
-    function verficar() 
+    function emailverify() 
+    {
+        var email = ipt_email.value;
+        if (email.includes("@") && email.includes(".com")) 
+        {
+            div_error_email.innerHTML = `E-mail Valído`;
+            div_error_email.style = `color:#a8d5ba`;
+        }    
+        else
+        {
+            div_error_email.innerHTML = `E-mail Invalído`
+            div_error_email.style = `color:#ff6f61`;
+        }
+    }
+    function usernameverify() 
+    {
+        var username = ipt_username.value;
+        if (username.length == 0) 
+        {
+            div_error_username.innerHTML = `Você precisa ter um nome de usuário`
+            div_error_username.style = `color:#ff6f61`;
+        }    
+        else if (username.length <= 45) 
+        {
+            div_error_username.innerHTML = ``
+        }
+        else
+        {
+            div_error_username.innerHTML = `Seu username é grande demais`
+            div_error_username.style = `color:#ff6f61`;
+        }
+    }
+    function senhaverify() 
     {
         var senha = document.getElementById("ipt_senha").value;
         var valida_letra_caps = ['A', 'B', 'C', 'D', 'E', 'F', 'G','H', 'I', 'J', 'K', 'L', 'M', 'N','O', 'P', 'Q', 'R', 'S', 'T', 'U','V', 'W', 'X', 'Y', 'Z'];
@@ -168,7 +202,7 @@
             }
         }
     }
-    function comparar() 
+    function confirmasenhaverify() 
     { 
         if (ipt_confirmar_senha.value == '' || ipt_senha.value == '') 
         {
