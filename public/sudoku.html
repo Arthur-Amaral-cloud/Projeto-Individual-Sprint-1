@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -10,24 +11,25 @@
     <link href="https://fonts.googleapis.com/css2?family=Potta+One&display=swap" rel="stylesheet">
     <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
     <link rel="stylesheet" href="../style/app.css">
-    
-    
+
+
 </head>
-<body>
+
+<body onload="obterusername()">
     <nav>
         <div class="nav-container">
             <img src="../assets/Sudoku logo blue mode.png" alt="logo-sudoku" class="logo">
             <div class="dark-mode-toggle" id="dark-mode-toggle">
                 <i class="bx bxs-sun"></i>
                 <i class="bx bxs-moon"></i>
-                <a href="Página Perfil.html"><i class='bx bx-user-circle'></i> </a> 
+                <a href="Página Perfil.html"><i class='bx bx-user-circle'></i> </a>
             </div>
         </div>
     </nav>
     <div class="main">
         <div class="screen">
             <div class="start-screen active" id="start-screen">
-                <input type="text" placeholder="Your name" class="input-name" id="input-name">
+                <div class="input-name" id="input_name_username"></div>
                 <div class="btn" id="btn-level">
                     Fácil
                 </div>
@@ -164,4 +166,34 @@
     <script src="../js/sudokumain.js"></script>
     <script src="../js/app.js"></script>
 </body>
+
 </html>
+<script>
+    function obterusername() {
+        var idplayer = sessionStorage.ID_USUARIO;
+        fetch("/usuarios/captarusername", {
+            method: "POST",
+            headers: {
+                "Content-Type": "application/json",
+            },
+            body: JSON.stringify({
+                idplayer: idplayer
+            })
+        })
+            .then(res => res.json())
+            .then(data => {
+                if (data && data.length > 0) {
+                    const usuario = data[0]; // pega o primeiro resultado
+                    sessionStorage.setItem("username", usuario.username); // salva no sessionStorage
+                    console.log("Nome salvo na sessão:", usuario.username);
+                } else {
+                    console.log("Usuário não encontrado.");
+                }
+            })
+            .catch(erro => {
+                console.error("Erro ao captar username:", erro);
+            });
+
+        input_name_username.innerHTML = sessionStorage.username;
+    }
+</script>

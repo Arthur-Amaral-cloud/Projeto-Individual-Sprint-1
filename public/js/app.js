@@ -12,8 +12,6 @@ const result_screen = document.querySelector('#result-screen')
 //
 const cells = document.querySelectorAll('.main-grid-cell');
 
-const name_input = document.querySelector('#input-name');
-
 const number_inputs = document.querySelectorAll('.number');
 
 const player_name = document.querySelector('#player-name');
@@ -58,7 +56,7 @@ const initGameGrid = () => {
 //
 
 const setPlayerName = (name) => localStorage.setItem('player_name', name);
-const getPlayerName = () => localStorage.getItem('player_name');
+
 
 const showTime  = (seconds) => new Date(seconds * 1000).toISOString().substr(11,8);
 
@@ -112,7 +110,7 @@ const loadSudoku = () => {
 
     level_index = game.level;
 
-    // Mostar Sudoku nas divs
+    // Mostrar Sudoku nas divs
     for (let i = 0; i < Math.pow(CONSTANT.GRID_SIZE, 2); i++) {
         let row = Math.floor(i / CONSTANT.GRID_SIZE);
         let col = i % CONSTANT.GRID_SIZE;
@@ -305,8 +303,7 @@ const startGame = () =>
     start_screen.classList.remove('active');
     game_screen.classList.add('active');
 
-    player_name.innerHTML = name_input.value.trim();
-    setPlayerName(name_input.value.trim());
+    player_name.innerHTML = sessionStorage.username;
 
     game_level.innerHTML = CONSTANT.LEVEL_NAME[level_index];
 
@@ -340,37 +337,15 @@ document.querySelector('#btn-level').addEventListener('click', (e) => {
 })
 
 document.querySelector('#btn-play').addEventListener('click', () => {
-    if (name_input.value.trim().length > 0) 
-    {
-        initSudoku();
-        startGame();
-    }
-    else
-    {
-        name_input.classList.add('input-err');
-        setTimeout(() => {
-            name_input.classList.remove('input-err');
-            name_input.focus();
-        }, 500);
-    }
+    initSudoku();
+    startGame();
 });
 
 document.querySelector('#btn-continue').addEventListener('click', () => 
-{
-    if (name_input.value.trim().length > 0) 
-    {
-        loadSudoku();
-        startGame();
-    } 
-    else 
-    {
-        name_input.classList.add('input-err');
-        setTimeout(() => 
-        {
-            name_input.classList.remove('input-err');
-            name_input.focus();
-        }, 500);
-    }
+{ 
+    loadSudoku();
+    startGame();
+
 });
 
 document.querySelector('#btn-pause').addEventListener('click', () => {
@@ -411,15 +386,6 @@ const init = () => {
     initGameGrid();
     initCellsEvent();
     initNumberInputEvent();
-
-    if (getPlayerName()) 
-    {
-        name_input.value = getPlayerName();    
-    }
-    else
-    {
-        name_input.focus();
-    }
 }
 
 init();

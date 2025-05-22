@@ -77,8 +77,31 @@ function cadastrar(req, res) {
             );
     }
 }
+function captarusername(req,res) {
+    var idplayer = req.body.idplayer;
+    if(idplayer == undefined) {
+        res.status(400).send("Seu idplayer está undefined!");
+    }
+    else{
+        usuarioModel.captarusername(idplayer)
+            .then(
+                function (resultado) {
+                    res.json(resultado)
+                }
+            ) .catch(
+                function(erro){
+                    console.log(erro);
+                    console.log("erro: ", erro.sqlMessage);
+                    res.status(500).json(erro.sqlMessage);
+                }
+            )
+    }
+    
+}
 
 module.exports = {
     autenticar,
-    cadastrar
+    cadastrar,
+    captarusername
+
 }
