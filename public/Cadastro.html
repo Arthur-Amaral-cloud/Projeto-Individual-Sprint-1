@@ -24,7 +24,7 @@
                         <div class="text-box">
                             <p>Email</p>
                         </div>
-                        <div class="input-box" >
+                        <div class="input-box">
                             <input type="text" id="ipt_email" oninput="emailverify()">
                             <div id="div_error_email" class="text-error-cadastro"></div>
                         </div>
@@ -76,202 +76,255 @@
         </div>
     </div>
 </body>
+
 </html>
 <script>
-    function emailverify() 
-    {
+    function emailverify() {
         var email = ipt_email.value;
-        if (email.includes("@") && email.includes(".com")) 
-        {
+        if (email.includes("@") && email.includes(".com")) {
             div_error_email.innerHTML = `E-mail Valído`;
             div_error_email.style = `color:#a8d5ba`;
-        }    
-        else
-        {
+        }
+        else {
             div_error_email.innerHTML = `E-mail Invalído`
             div_error_email.style = `color:#ff6f61`;
         }
     }
-    function usernameverify() 
-    {
+    function usernameverify() {
         var username = ipt_username.value;
-        if (username.length == 0) 
-        {
+        if (username.length == 0) {
             div_error_username.innerHTML = `Você precisa ter um nome de usuário`
             div_error_username.style = `color:#ff6f61`;
-        }    
-        else if (username.length <= 45) 
-        {
+        }
+        else if (username.length <= 45) {
             div_error_username.innerHTML = ``
         }
-        else
-        {
+        else {
             div_error_username.innerHTML = `Seu username é grande demais`
             div_error_username.style = `color:#ff6f61`;
         }
     }
-    function senhaverify() 
-    {
+    function senhaverify() {
         var senha = document.getElementById("ipt_senha").value;
-        var valida_letra_caps = ['A', 'B', 'C', 'D', 'E', 'F', 'G','H', 'I', 'J', 'K', 'L', 'M', 'N','O', 'P', 'Q', 'R', 'S', 'T', 'U','V', 'W', 'X', 'Y', 'Z'];
-        var valida_letra_min = ['a', 'b', 'c', 'd', 'e', 'f', 'g','h', 'i', 'j', 'k', 'l', 'm', 'n','o', 'p', 'q', 'r', 's', 't', 'u','v', 'w', 'x', 'y', 'z'];
-        var valida_numeros = ['1','2','3','4','5','6','7','8','9','0'];
-        var valida_caracteres_especiais = ['!', '@', '#', '$', '%', '^', '&', '*', '(', ')','-', '_', '=', '+', '[', ']', '{', '}','|',';', ':', '\'', '"', ',', '<', '.', '>', '/', '?'];
-        if (senha == '') 
-        {
-            
+        var valida_letra_caps = ['A', 'B', 'C', 'D', 'E', 'F', 'G', 'H', 'I', 'J', 'K', 'L', 'M', 'N', 'O', 'P', 'Q', 'R', 'S', 'T', 'U', 'V', 'W', 'X', 'Y', 'Z'];
+        var valida_letra_min = ['a', 'b', 'c', 'd', 'e', 'f', 'g', 'h', 'i', 'j', 'k', 'l', 'm', 'n', 'o', 'p', 'q', 'r', 's', 't', 'u', 'v', 'w', 'x', 'y', 'z'];
+        var valida_numeros = ['1', '2', '3', '4', '5', '6', '7', '8', '9', '0'];
+        var valida_caracteres_especiais = ['!', '@', '#', '$', '%', '^', '&', '*', '(', ')', '-', '_', '=', '+', '[', ']', '{', '}', '|', ';', ':', '\'', '"', ',', '<', '.', '>', '/', '?'];
+        if (senha == '') {
+
         }
-        else
-        {
-                div_text_title.innerHTML = `Sua senha deve conter:` 
-                div_text_title.style = `color:#2e2e2e; text-weight:bold`
-                div_text_caps.innerHTML = `*Letra Maiúscula Ex: A`;
-                div_text_caps.style = `color:#ff6f61`;
-                div_text_min.innerHTML = `*Letra Minúscula Ex: a`;
-                div_text_min.style = `color:#ff6f61`;
-                div_text_num.innerHTML = `*Número Ex: 0`;
-                div_text_num.style = `color:#ff6f61`;
-                div_text_char.innerHTML = `*Caractere Especial Ex: @`;
-                div_text_char.style = `color:#ff6f61`
-            
-            
-            for(var a = 0; a < senha.length; a++)
-            {
-                for(var b = 0; b < valida_letra_caps.length; b++)
-                {
-                    if (senha[a] == valida_letra_caps[b]) 
-                    {
+        else {
+            div_text_title.innerHTML = `Sua senha deve conter:`
+            div_text_title.style = `color:#2e2e2e; text-weight:bold`
+            div_text_caps.innerHTML = `*Letra Maiúscula Ex: A`;
+            div_text_caps.style = `color:#ff6f61`;
+            div_text_min.innerHTML = `*Letra Minúscula Ex: a`;
+            div_text_min.style = `color:#ff6f61`;
+            div_text_num.innerHTML = `*Número Ex: 0`;
+            div_text_num.style = `color:#ff6f61`;
+            div_text_char.innerHTML = `*Caractere Especial Ex: @`;
+            div_text_char.style = `color:#ff6f61`
+
+
+            for (var a = 0; a < senha.length; a++) {
+                for (var b = 0; b < valida_letra_caps.length; b++) {
+                    if (senha[a] == valida_letra_caps[b]) {
                         div_text_caps.innerHTML = `*Letra Maiúscula Ex: A`;
                         div_text_caps.style = `color:#a8d5ba`;
                         break;
                     }
                 }
-                if (senha[a] == valida_letra_caps[b]) 
-                {
-                    break;    
+                if (senha[a] == valida_letra_caps[b]) {
+                    break;
                 }
             }
-            for(var c = 0; c < senha.length; c++)
-            {
-                for(var d = 0; d < valida_letra_min.length; d++)
-                {
-                    if (senha[c] == valida_letra_min[d]) 
-                    {
+            for (var c = 0; c < senha.length; c++) {
+                for (var d = 0; d < valida_letra_min.length; d++) {
+                    if (senha[c] == valida_letra_min[d]) {
                         div_text_min.innerHTML = `*Letra Minúscula Ex: a`;
                         div_text_min.style = `color:#a8d5ba`;
                         break;
                     }
                 }
-                if (senha[c] == valida_letra_min[d]) 
-                {
-                    break;    
+                if (senha[c] == valida_letra_min[d]) {
+                    break;
                 }
             }
-            for(var e = 0; e < senha.length; e++)
-            {
-                for(var f = 0; f < valida_numeros.length; f++)
-                {
-                    if (senha[e] == valida_numeros[f]) 
-                    {
+            for (var e = 0; e < senha.length; e++) {
+                for (var f = 0; f < valida_numeros.length; f++) {
+                    if (senha[e] == valida_numeros[f]) {
                         div_text_num.innerHTML = `*Número Ex: 0`;
                         div_text_num.style = `color:#a8d5ba`;
                         break;
                     }
                 }
-                if (senha[e] == valida_numeros[f]) 
-                {
+                if (senha[e] == valida_numeros[f]) {
                     ax_valida_numero = true;
-                    break;    
+                    break;
                 }
             }
-            for(var g = 0; g < senha.length; g++)
-            {
-                for(var h = 0; h < valida_caracteres_especiais.length; h++)
-                {
-                    if (senha[g] == valida_caracteres_especiais[h]) 
-                    {
+            for (var g = 0; g < senha.length; g++) {
+                for (var h = 0; h < valida_caracteres_especiais.length; h++) {
+                    if (senha[g] == valida_caracteres_especiais[h]) {
                         div_text_char.innerHTML = `*Caractere Especial Ex: @`;
                         div_text_char.style = `color:#a8d5ba`;
                         break;
                     }
                 }
-                if (senha[g] == valida_caracteres_especiais[h]) 
-                {
-                    break;    
+                if (senha[g] == valida_caracteres_especiais[h]) {
+                    break;
                 }
             }
         }
     }
-    function confirmasenhaverify() 
-    { 
-        if (ipt_confirmar_senha.value == '' || ipt_senha.value == '') 
-        {
-            div_text_confirmar_senha.innerHTML = '';    
+    function confirmasenhaverify() {
+        if (ipt_confirmar_senha.value == '' || ipt_senha.value == '') {
+            div_text_confirmar_senha.innerHTML = '';
         }
-        else
-        {
-           if (ipt_senha.value == ipt_confirmar_senha.value) 
-            {
-                div_text_confirmar_senha.innerHTML = `<span style="color:#a8d5ba">As senhas conferem</span>`;  
+        else {
+            if (ipt_senha.value == ipt_confirmar_senha.value) {
+                div_text_confirmar_senha.innerHTML = `<span style="color:#a8d5ba">As senhas conferem</span>`;
             }
-            else
-            {
-            div_text_confirmar_senha.innerHTML = `<span style="color:#ff6f61">As senhas não estão iguais</span>`;
-            } 
+            else {
+                div_text_confirmar_senha.innerHTML = `<span style="color:#ff6f61">As senhas não estão iguais</span>`;
+            }
         }
-        
+
+    }
+    function verifycampos() {
+        var email = ipt_email.value;
+        var username = ipt_username.value;
+        var senha = ipt_senha.value;
+        var confirmacaoSenha = ipt_confirmar_senha.value;
+        var valida_letra_caps = ['A', 'B', 'C', 'D', 'E', 'F', 'G', 'H', 'I', 'J', 'K', 'L', 'M', 'N', 'O', 'P', 'Q', 'R', 'S', 'T', 'U', 'V', 'W', 'X', 'Y', 'Z'];
+        var valida_letra_min = ['a', 'b', 'c', 'd', 'e', 'f', 'g', 'h', 'i', 'j', 'k', 'l', 'm', 'n', 'o', 'p', 'q', 'r', 's', 't', 'u', 'v', 'w', 'x', 'y', 'z'];
+        var valida_numeros = ['1', '2', '3', '4', '5', '6', '7', '8', '9', '0'];
+        var valida_caracteres_especiais = ['!', '@', '#', '$', '%', '^', '&', '*', '(', ')', '-', '_', '=', '+', '[', ']', '{', '}', '|', ';', ':', '\'', '"', ',', '<', '.', '>', '/', '?'];
+        var ax_email = false;
+        var ax_username = false;
+        var ax_senha = false;
+        var ax_confirmacaoSenha = false;
+        //Verificação Email
+        if (email.includes("@") && email.includes(".com")) {
+            ax_email = true;
+        }
+        //Verificação Username
+        if (username.length > 0 && username.length <= 45) {
+            ax_username = true;
+        }
+        //Verificação Confirmar senha
+        if (confirmacaoSenha == senha) {
+            ax_confirmacaoSenha = true;
+        }
+        //Verificação senha
+        var ax_caps = false;
+        var ax_min = false;
+        var ax_num = false;
+        var ax_especial = false;
+        for (var a = 0; a < senha.length; a++) {
+            for (var b = 0; b < valida_letra_caps.length; b++) {
+                if (senha[a] == valida_letra_caps[b]) {
+                    ax_caps = true;
+                    break;
+                }
+            }
+            if (senha[a] == valida_letra_caps[b]) {
+                break;
+            }
+        }
+        for (var c = 0; c < senha.length; c++) {
+            for (var d = 0; d < valida_letra_min.length; d++) {
+                if (senha[c] == valida_letra_min[d]) {
+                    ax_min = true;
+                    break;
+                }
+            }
+            if (senha[c] == valida_letra_min[d]) {
+                break;
+            }
+        }
+        for (var e = 0; e < senha.length; e++) {
+            for (var f = 0; f < valida_numeros.length; f++) {
+                if (senha[e] == valida_numeros[f]) {
+                    ax_num = true;
+                    break;
+                }
+            }
+            if (senha[e] == valida_numeros[f]) {
+                ax_valida_numero = true;
+                break;
+            }
+        }
+        for (var g = 0; g < senha.length; g++) {
+            for (var h = 0; h < valida_caracteres_especiais.length; h++) {
+                if (senha[g] == valida_caracteres_especiais[h]) {
+                    ax_especial = true;
+                    break;
+                }
+            }
+            if (senha[g] == valida_caracteres_especiais[h]) {
+                break;
+            }
+        }
+        if (ax_caps && ax_min && ax_num && ax_especial) {
+            ax_senha = true;
+        }
+        if (ax_email && ax_senha && ax_username && ax_confirmacaoSenha) {
+            cadastrar();
+        }
+
     }
     function cadastrar() {
-    // aguardar();
+        // aguardar();
 
-    //Recupere o valor da nova input pelo nome do id
-    // Agora vá para o método fetch logo abaixo
-    var email = ipt_email.value;
-    var username = ipt_username.value;
-    var senha = ipt_senha.value;
-    var confirmacaoSenha = ipt_confirmar_senha.value;
+        //Recupere o valor da nova input pelo nome do id
+        // Agora vá para o método fetch logo abaixo
+        var email = ipt_email.value;
+        var username = ipt_username.value;
+        var senha = ipt_senha.value;
+        var confirmacaoSenha = ipt_confirmar_senha.value;
 
-    // Verificando se há algum campo em branco
-    if (
-      email == "" ||
-      username == "" ||
-      senha == "" ||
-      confirmacaoSenha == "" 
-    ) {
-        alert("Mensagem de erro para todos os campos em branco");
-        return;
-    } 
-
-    // Enviando o valor da nova input
-    fetch("/usuarios/cadastrar", {
-      method: "POST",
-      headers: {
-        "Content-Type": "application/json",
-      },
-      body: JSON.stringify({
-        // crie um atributo que recebe o valor recuperado aqui
-        // Agora vá para o arquivo routes/usuario.js
-        email: email,
-        username: username,
-        senha: senha
-      }),
-    })
-      .then(function (resposta) {
-        console.log("resposta: ", resposta);
-
-        if (resposta.ok) {
-            alert("Cadastro realizado com sucesso! Redirecionando para tela de Login...");
-
-          setTimeout(() => {
-            window.location = "Login.html";
-          }, "1000");
-        } else {
-          throw "Houve um erro ao tentar realizar o cadastro!";
+        // Verificando se há algum campo em branco
+        if (
+            email == "" ||
+            username == "" ||
+            senha == "" ||
+            confirmacaoSenha == ""
+        ) {
+            alert("Mensagem de erro para todos os campos em branco");
+            return;
         }
-      })
-      .catch(function (resposta) {
-        console.log(`#ERRO: ${resposta}`);
-        alert("Erro no catch");
-      });
-  }
+
+        // Enviando o valor da nova input
+        fetch("/usuarios/cadastrar", {
+            method: "POST",
+            headers: {
+                "Content-Type": "application/json",
+            },
+            body: JSON.stringify({
+                // crie um atributo que recebe o valor recuperado aqui
+                // Agora vá para o arquivo routes/usuario.js
+                email: email,
+                username: username,
+                senha: senha
+            }),
+        })
+            .then(function (resposta) {
+                console.log("resposta: ", resposta);
+
+                if (resposta.ok) {
+                    alert("Cadastro realizado com sucesso! Redirecionando para tela de Login...");
+
+                    setTimeout(() => {
+                        window.location = "Login.html";
+                    }, "1000");
+                } else {
+                    throw "Houve um erro ao tentar realizar o cadastro!";
+                }
+            })
+            .catch(function (resposta) {
+                console.log(`#ERRO: ${resposta}`);
+                alert("Erro no catch");
+            });
+    }
 </script>
