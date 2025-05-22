@@ -10,7 +10,7 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Potta+One&display=swap" rel="stylesheet">
     <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
-    <link rel="stylesheet" href="../style/app.css">
+    <link rel="stylesheet" href="style/app.css">
 
 
 </head>
@@ -29,7 +29,7 @@
     <div class="main">
         <div class="screen">
             <div class="start-screen active" id="start-screen">
-                <div class="input-name" id="input_name_username"></div>
+                <div class="text-welcome">Seja Bem-vindo<div id="input_name_username"></div></div>
                 <div class="btn" id="btn-level">
                     Fácil
                 </div>
@@ -194,6 +194,16 @@
                 console.error("Erro ao captar username:", erro);
             });
 
-        input_name_username.innerHTML = sessionStorage.username;
+        atualizarnome();
+    }
+    function atualizarnome() 
+    {
+        const init_nome_user = setInterval(()=> {
+            input_name_username.innerHTML = sessionStorage.username;
+        },500);
+
+        setTimeout(() => {
+            clearInterval(init_nome_user);
+        },2000);
     }
 </script>
