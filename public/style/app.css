@@ -169,6 +169,7 @@ nav {
 .text-welcome
 {
     font-size: var(--font-size-lg);
+    color: var(--blue);
     text-align: center;
 }
 .start-screen>*+* {
@@ -202,6 +203,10 @@ nav {
 
 .btn-blue {
     background-color: var(--blue);
+    color: var(--white);
+}
+.btn-blue-2{
+    background-color: #a0d9ee;
     color: var(--white);
 }
 

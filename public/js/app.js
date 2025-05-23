@@ -1,4 +1,4 @@
-document.querySelector('#dark-mode-toggle').addEventListener('click', () => {
+document.querySelector('#darkmode').addEventListener('click', () => {
     document.body.classList.toggle('dark');
     const isDarkMode = document.body.classList.contains('dark');
     localStorage.setItem('darkmode', isDarkMode);

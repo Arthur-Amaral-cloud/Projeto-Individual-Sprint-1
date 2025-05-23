@@ -4,8 +4,8 @@ use sudoku_com;
 
 create table if not exists player (
 idPlayer int primary key auto_increment,
-Username varchar(45) not null,
-email varchar(100) not null,
+username varchar(45) not null,
+email varchar(100) not null unique,
 senha varchar(500) not null
 );
 
@@ -35,3 +35,4 @@ DtAmizade datetime default current_timestamp
 
 select * from player;
 
+select username from player where idPlayer = 1;

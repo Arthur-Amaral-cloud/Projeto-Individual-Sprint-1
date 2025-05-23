@@ -5,7 +5,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Sudoku - Escolha a dificuldade</title>
-    <link rel="shortcut icon" href="../assets/Sudoku logo.png" type="image/x-icon">
+    <link rel="shortcut icon" href="assets/Sudoku logo.png" type="image/x-icon">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Potta+One&display=swap" rel="stylesheet">
@@ -18,10 +18,12 @@
 <body onload="obterusername()">
     <nav>
         <div class="nav-container">
-            <img src="../assets/Sudoku logo blue mode.png" alt="logo-sudoku" class="logo">
-            <div class="dark-mode-toggle" id="dark-mode-toggle">
-                <i class="bx bxs-sun"></i>
-                <i class="bx bxs-moon"></i>
+            <img src="assets/Sudoku logo blue mode.png" alt="logo-sudoku" class="logo">
+            <div class="dark-mode-toggle">
+                <div id="darkmode">
+                    <i class="bx bxs-sun"></i>
+                    <i class="bx bxs-moon"></i>
+                </div>
                 <a href="Página Perfil.html"><i class='bx bx-user-circle'></i> </a>
             </div>
         </div>
@@ -29,11 +31,12 @@
     <div class="main">
         <div class="screen">
             <div class="start-screen active" id="start-screen">
-                <div class="text-welcome">Seja Bem-vindo<div id="input_name_username"></div></div>
+                <div class="text-welcome">Seja Bem-vindo<div id="input_name_username"></div>
+                </div>
                 <div class="btn" id="btn-level">
                     Fácil
                 </div>
-                <div class="btn" id="btn-continue">Continue</div>
+                <div class="btn btn-blue" id="btn-continue">Continuar</div>
                 <div class="btn btn-blue" id="btn-play">New game</div>
             </div>
             <div class="main-game" id="game-screen">
@@ -162,9 +165,9 @@
         </div>
     </div>
 
-    <script src="../js/constant.js"></script>
-    <script src="../js/sudokumain.js"></script>
-    <script src="../js/app.js"></script>
+    <script src="js/constant.js"></script>
+    <script src="js/sudokumain.js"></script>
+    <script src="js/app.js"></script>
 </body>
 
 </html>
@@ -196,14 +199,13 @@
 
         atualizarnome();
     }
-    function atualizarnome() 
-    {
-        const init_nome_user = setInterval(()=> {
+    function atualizarnome() {
+        const init_nome_user = setInterval(() => {
             input_name_username.innerHTML = sessionStorage.username;
-        },500);
+        }, 500);
 
         setTimeout(() => {
             clearInterval(init_nome_user);
-        },2000);
+        }, 2000);
     }
 </script>

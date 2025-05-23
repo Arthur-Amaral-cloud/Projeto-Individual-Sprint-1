@@ -4,17 +4,21 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="shortcut icon" href="../assets/Sudoku logo.png" type="image/x-icon">
+    <link rel="shortcut icon" href="assets/Sudoku logo.png" type="image/x-icon">
     <title>Sudoku - Perfil</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Potta+One&display=swap" rel="stylesheet">
     <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
-    <link rel="stylesheet" href="../style/dashboard.css">
+    <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
+    <link rel="stylesheet" href="style/dashboard.css">
 </head>
 
 <body>
     <nav>
         <div class="nav-container">
             <a href="Login.html" class="nav-logo">
-                <img src="../assets/Sudoku logo blue mode.png" alt="logo-sudoku" class="logo">
+                <img src="assets/Sudoku logo blue mode.png" alt="logo-sudoku" class="logo">
             </a>
             <div class="dark-mode-toggle" id="dark-mode-toggle">
                 <i class="bx bxs-sun"></i>
@@ -25,10 +29,29 @@
     </nav>
     <div class="dashboard-screen">
         <div class="dashboard-pai">
-            Olá usuário
+            <div class="container-nav-dash">
+                <div class="icon-perfil">
+                    <img src="assets/Perfil-Icon.png" alt="Perfil-Icon" class="icon-image">
+                </div>
+                <div class="info-txts-perfil">
+                    <div class="nome-user" id="nome_user">Arthur Felipe</div>
+                    <div class="sair_conta"><u>Sair da conta</u></div>
+                </div>
+                <div class="button-box">
+                    <button class="button-style" id="button_redirect_jogo">Voltar para Jogar</button>
+                </div>
+            </div>
         </div>
     </div>
 </body>
 
 </html>
-<script src="../js/darkmode.js"></script>
+<script src="js/darkmode.js"></script>
+<script>
+    document.querySelector('#button_redirect_jogo').addEventListener('click', () => {
+        window.location.href = 'sudoku.html';
+    });
+    document.querySelector('.sair_conta').addEventListener("click", () => {
+        window.location.href = 'index.html';
+    });
+</script>
