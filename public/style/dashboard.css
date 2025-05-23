@@ -45,6 +45,7 @@ body {
     background-color: var(--bg-body);
     overflow-x: hidden;
     user-select: none;
+    color: var(--white);
 }
 
 .logo {
@@ -212,4 +213,61 @@ nav {
 {
     background-color: #caf0f8;
     color: #000;
+}
+.elements-dashboard
+{
+    height: 75%;
+    width: 100%;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+    gap: 20%;
+}
+.kpi-container
+{
+    height: 100%;
+    width: 40%;
+
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+.kpi-box
+{
+    width: 100%;
+    height: 33%;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.kpi-element
+{
+    height: 100%;
+    width: 100%;
+    font-size: 2.2vh;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+}
+.kpi-content
+{
+    height: 50%;
+    width: 60%;
+    background-color: #F0F2F5;
+    font-size: 3.5vh;
+    color: #2a2a38;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.grafico-dinamico
+{
+    height: 100%;
+    width: 40%;
 }

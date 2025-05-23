@@ -101,11 +101,13 @@ nav {
     font-size: var(--font-size-lg);
     color: var(--blue);
 }
-
+.bx
+{
+    cursor: pointer;
+}
 .dark-mode-toggle {
     color: var(--blue);
     font-size: var(--font-size-lg);
-    cursor: pointer;
 
     display: flex;
     justify-content: center;

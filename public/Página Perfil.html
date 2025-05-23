@@ -14,7 +14,7 @@
     <link rel="stylesheet" href="style/dashboard.css">
 </head>
 
-<body>
+<body onload="atualizarpagina()">
     <nav>
         <div class="nav-container">
             <a href="Login.html" class="nav-logo">
@@ -34,11 +34,36 @@
                     <img src="assets/Perfil-Icon.png" alt="Perfil-Icon" class="icon-image">
                 </div>
                 <div class="info-txts-perfil">
-                    <div class="nome-user" id="nome_user">Arthur Felipe</div>
+                    <div class="nome-user" id="nome_user"></div>
                     <div class="sair_conta"><u>Sair da conta</u></div>
                 </div>
                 <div class="button-box">
                     <button class="button-style" id="button_redirect_jogo">Voltar para Jogar</button>
+                </div>
+            </div>
+            <div class="elements-dashboard">
+                <div class="kpi-container">
+                    <div class="kpi-box">
+                        <div class="kpi-element">
+                            <h3>Jogos Finalizados</h3>
+                            <div class="kpi-content">1000</div>
+                        </div>
+                    </div>
+                    <div class="kpi-box">
+                        <div class="kpi-element">
+                            <h3>Média de erros por jogo</h3>
+                            <div class="kpi-content">50,3</div>
+                        </div>
+                    </div>
+                    <div class="kpi-box">
+                        <div class="kpi-element">
+                            <h3>Tempo de jogo total</h3>
+                            <div class="kpi-content">220h</div>
+                        </div>
+                    </div>
+                </div>
+                <div class="grafico-dinamico">
+                    <canvas id="myChart"></canvas>
                 </div>
             </div>
         </div>
@@ -47,6 +72,8 @@
 
 </html>
 <script src="js/darkmode.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/chartjs-plugin-datalabels@2.2.0"></script>
 <script>
     document.querySelector('#button_redirect_jogo').addEventListener('click', () => {
         window.location.href = 'sudoku.html';
@@ -54,4 +81,55 @@
     document.querySelector('.sair_conta').addEventListener("click", () => {
         window.location.href = 'index.html';
     });
+    function atualizarpagina() {
+        nome_user.innerHTML = sessionStorage.username;
+    }
+    const ctx = document.getElementById("myChart")
+    const grafico = new Chart(ctx, {
+        type: 'doughnut',
+        data: {
+            labels: ['Fácil', 'Médio', 'Difícil'],
+            datasets: [{
+                data: [10, 20, 5],
+                backgroundColor: ['#4CAF50', '#FFC107', '#F44336'],
+                borderColor: '#00aeef',
+                borderWidth: 10
+            }]
+        },
+        options: {
+            plugins: {
+                title: {
+                    display: true,
+                    text: 'Dificuldade das partidas jogadas',
+                    color: '#ffffff',
+                    font: {
+                        size: 25,
+                        family: 'Arial',
+                        weight: 'bold'
+                    },
+                    padding: {
+                        top: 10,
+                        bottom: 10
+                    }
+                },
+                legend: {
+                    position: 'left',
+                    labels: {
+                        color: '#ffffff'
+                    }
+                },
+                datalabels: {
+                    color: '#fff',
+                    font: {
+                        weight: 'bold',
+                        size: 26
+                    }
+                }
+            },
+            cutout: '60%' 
+        },
+        plugins: [ChartDataLabels] 
+    });
+
+
 </script>
