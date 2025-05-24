@@ -10,12 +10,15 @@ senha varchar(500) not null
 );
 
 create table if not exists LogJogos (
-idJogos int,
+idJogos int auto_increment,
 Fkplayer int,
 constraint PkCompostaLogJogos primary key(idJogos, Fkplayer),
 constraint FkPlayerJogos
 foreign key (Fkplayer) references player(idPlayer),
 QtdErros int not null,
+Dificuldade varchar(45) not null,
+constraint chkDificuldade
+check(Dificuldade in('Fácil','Médio','Díficil')),
 TempodeJogo int not null,
 JogoFinalizado tinyint default '0',
 constraint chkJogoFinalizado
@@ -36,3 +39,9 @@ DtAmizade datetime default current_timestamp
 select * from player;
 
 select username from player where idPlayer = 1;
+
+insert into LogJogos(Fkplayer,QtdErros,Dificuldade,TempodeJogo,JogoFinalizado) values ('1',0,'Médio',0,0);
+
+select * from LogJogos;
+
+select max(idJogos) from LogJogos where Fkplayer = 1 and JogoFinalizado = 0;

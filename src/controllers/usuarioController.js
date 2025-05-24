@@ -1,5 +1,4 @@
 var usuarioModel = require("../models/usuarioModel");
-var aquarioModel = require("../models/aquarioModel");
 
 function autenticar(req, res) {
     var email = req.body.emailServer;
@@ -98,10 +97,100 @@ function captarusername(req,res) {
     }
     
 }
+function comecarjogo(req, res) {
+    // Crie uma variável que vá recuperar os valores do arquivo cadastro.html
+    var id = req.body.id;
+    var dificuldade = req.body.dificuldade;
+
+    // Faça as validações dos valores
+    if (id == undefined) {
+        res.status(400).send("Seu id está undefined!");
+    } else if (dificuldade == undefined) {
+        res.status(400).send("Seu dificuldade está undefined!");
+    } else {
+
+        // Passe os valores como parâmetro e vá para o arquivo usuarioModel.js
+        usuarioModel.comecarjogo(id, dificuldade)
+            .then(
+                function (resultado) {
+                    res.json(resultado);
+                }
+            ).catch(
+                function (erro) {
+                    console.log(erro);
+                    console.log(
+                        "\nHouve um erro ao realizar o cadastro! Erro: ",
+                        erro.sqlMessage
+                    );
+                    res.status(500).json(erro.sqlMessage);
+                }
+            );
+    }
+}
+// function errosup(req, res) {
+//     // Crie uma variável que vá recuperar os valores do arquivo cadastro.html
+//     var id = req.body.id;
+//     var erros = req.body.erros;
+
+//     // Faça as validações dos valores
+//     if (id == undefined) {
+//         res.status(400).send("Seu id está undefined!");
+//     } else if (erros == undefined) {
+//         res.status(400).send("Seu erros está undefined!");
+//     } else {
+
+//         // Passe os valores como parâmetro e vá para o arquivo usuarioModel.js
+//         usuarioModel.errosup(id, erros)
+//             .then(
+//                 function (resultado) {
+//                     res.json(resultado);
+//                 }
+//             ).catch(
+//                 function (erro) {
+//                     console.log(erro);
+//                     console.log(
+//                         "\nHouve um erro ao realizar o cadastro! Erro: ",
+//                         erro.sqlMessage
+//                     );
+//                     res.status(500).json(erro.sqlMessage);
+//                 }
+//             );
+//     }
+// }
+function obteridjogo(req, res) {
+    // Crie uma variável que vá recuperar os valores do arquivo cadastro.html
+    var idjogador = req.params.idplayer;
+
+    // Faça as validações dos valores
+    if (idjogador == undefined) {
+        res.status(400).send("Seu idJogador está undefined!");
+    } else {
+
+        // Passe os valores como parâmetro e vá para o arquivo usuarioModel.js
+        usuarioModel.obteridjogo(idjogador)
+            .then(
+                function (resultado) {
+                    res.json(resultado);
+                }
+            ).catch(
+                function (erro) {
+                    console.log(erro);
+                    console.log(
+                        "\nHouve um erro ao realizar o cadastro! Erro: ",
+                        erro.sqlMessage
+                    );
+                    res.status(500).json(erro.sqlMessage);
+                }
+            );
+    }
+}
 
 module.exports = {
     autenticar,
     cadastrar,
-    captarusername
+    captarusername,
+    comecarjogo,
+    obteridjogo
+    //errosup
 
 }

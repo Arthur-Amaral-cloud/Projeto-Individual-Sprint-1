@@ -167,7 +167,7 @@
 
     <script src="js/constant.js"></script>
     <script src="js/sudokumain.js"></script>
-    <script src="js/app.js"></script>
+    <script src="js/configsudokupage.js"></script>
 </body>
 
 </html>
@@ -186,8 +186,8 @@
             .then(res => res.json())
             .then(data => {
                 if (data && data.length > 0) {
-                    const usuario = data[0]; // pega o primeiro resultado
-                    sessionStorage.setItem("username", usuario.username); // salva no sessionStorage
+                    const usuario = data[0]; 
+                    sessionStorage.setItem("username", usuario.username); 
                     console.log("Nome salvo na sessão:", usuario.username);
                 } else {
                     console.log("Usuário não encontrado.");
