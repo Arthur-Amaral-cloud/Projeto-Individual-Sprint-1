@@ -30,4 +30,26 @@ router.put("/updatewin", function (req,res) {
 router.put("/updatetempo", function (req,res) {
     usuarioController.updatetempo(req,res);
 }) 
+router.get(`/obterjogoswins/:idplayer`, function (req,res) {
+    usuarioController.obterjogoswins(req,res);
+}) 
+router.get(`/obtermediaerro/:idplayer`, function (req,res) {
+    usuarioController.obtermediaerro(req,res);
+}) 
+router.get(`/obtertempodejogo/:idplayer`, function (req,res) {
+    usuarioController.obtertempodejogo(req,res);
+}) 
+router.get(`/obterjogofacil/:idplayer`, function (req,res) {
+    usuarioController.obterjogofacil(req,res);
+}) 
+router.get(`/obterjogomedio/:idplayer`, function (req,res) {
+    usuarioController.obterjogomedio(req,res);
+}) 
+router.get(`/obterjogosdificil/:idplayer`, function (req,res) {
+    usuarioController.obterjogosdificil(req,res);
+}) 
+router.get(`/obterjogograficos/:idplayer`, function (req,res) {
+    usuarioController.obterjogograficos(req,res);
+}) 
 module.exports = router;
+
