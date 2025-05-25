@@ -18,10 +18,16 @@ router.post("/captarusername", function (req,res){
 router.post("/comecarjogo", function (req,res){
     usuarioController.comecarjogo(req,res);
 });
-// router.put("/errosup", function (req,res) {
-//     usuarioController.errosup(req,res);
-// }) 
+router.put("/errosup", function (req,res) {
+    usuarioController.errosup(req,res);
+}) 
 router.get(`/obteridjogo/:idplayer`, function (req,res) {
     usuarioController.obteridjogo(req,res);
+}) 
+router.put("/updatewin", function (req,res) {
+    usuarioController.updatewin(req,res);
+}) 
+router.put("/updatetempo", function (req,res) {
+    usuarioController.updatetempo(req,res);
 }) 
 module.exports = router;

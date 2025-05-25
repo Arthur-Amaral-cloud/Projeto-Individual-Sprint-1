@@ -39,20 +39,38 @@ function comecarjogo(id, dificuldade) {
     console.log("Executando a instrução SQL: \n" + instrucaoSql);
     return database.executar(instrucaoSql);
 }
-// function errosup(id, erros) {
-//     console.log("ACESSEI O USUARIO MODEL \n \n\t\t >> Se aqui der erro de 'Error: connect ECONNREFUSED',\n \t\t >> verifique suas credenciais de acesso ao banco\n \t\t >> e se o servidor de seu BD está rodando corretamente. \n\n function cadastrar():", id, erros);
+function errosup(id, erros, idJogo) {
+    console.log("ACESSEI O USUARIO MODEL \n \n\t\t >> Se aqui der erro de 'Error: connect ECONNREFUSED',\n \t\t >> verifique suas credenciais de acesso ao banco\n \t\t >> e se o servidor de seu BD está rodando corretamente. \n\n function cadastrar():", id, erros, idJogo);
 
-//     var instrucaoSql = `
-//         update LogJogos set QtdErros = '${erros}' where Fkplayer = '${id}' and idJogos = '${}';
-//     `;
-//     console.log("Executando a instrução SQL: \n" + instrucaoSql);
-//     return database.executar(instrucaoSql);
-// }
+    var instrucaoSql = `
+        update LogJogos set QtdErros = '${erros}' where Fkplayer = '${id}' and idJogos = '${idJogo}';
+    `;
+    console.log("Executando a instrução SQL: \n" + instrucaoSql);
+    return database.executar(instrucaoSql);
+}
 function obteridjogo(idjogador) {
     console.log("ACESSEI O USUARIO MODEL \n \n\t\t >> Se aqui der erro de 'Error: connect ECONNREFUSED',\n \t\t >> verifique suas credenciais de acesso ao banco\n \t\t >> e se o servidor de seu BD está rodando corretamente. \n\n function cadastrar():", idjogador);
 
     var instrucaoSql = `
         select max(idJogos) as "jogo_atual" from LogJogos where Fkplayer = '${idjogador}' and JogoFinalizado = 0;;
+    `;
+    console.log("Executando a instrução SQL: \n" + instrucaoSql);
+    return database.executar(instrucaoSql);
+}
+function updatewin(id, win, idJogo) {
+    console.log("ACESSEI O USUARIO MODEL \n \n\t\t >> Se aqui der erro de 'Error: connect ECONNREFUSED',\n \t\t >> verifique suas credenciais de acesso ao banco\n \t\t >> e se o servidor de seu BD está rodando corretamente. \n\n function cadastrar():", id, win, idJogo);
+
+    var instrucaoSql = `
+        update LogJogos set JogoFinalizado = '${win}' where Fkplayer = '${id}' and idJogos = '${idJogo}';
+    `;
+    console.log("Executando a instrução SQL: \n" + instrucaoSql);
+    return database.executar(instrucaoSql);
+}
+function updatetempo(id, tempo, idJogo) {
+    console.log("ACESSEI O USUARIO MODEL \n \n\t\t >> Se aqui der erro de 'Error: connect ECONNREFUSED',\n \t\t >> verifique suas credenciais de acesso ao banco\n \t\t >> e se o servidor de seu BD está rodando corretamente. \n\n function cadastrar():", id, tempo, idJogo);
+
+    var instrucaoSql = `
+        update LogJogos set TempodeJogo = '${tempo}' where Fkplayer = '${id}' and idJogos = '${idJogo}';
     `;
     console.log("Executando a instrução SQL: \n" + instrucaoSql);
     return database.executar(instrucaoSql);
@@ -63,6 +81,8 @@ module.exports = {
     cadastrar,
     captarusername,
     comecarjogo,
-    obteridjogo
-    // errosup
+    obteridjogo,
+    errosup,
+    updatewin,
+    updatetempo
 };

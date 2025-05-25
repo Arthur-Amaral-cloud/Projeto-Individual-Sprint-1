@@ -5,7 +5,7 @@ document.querySelector('#darkmode').addEventListener('click', () => {
 });
 //Variaveís para o banco
 var total_erros = 0;
-var win_game = 0;
+var win_game = '';
 var tempoJogo = 0;
 // telas
 const start_screen = document.querySelector('#start-screen');
@@ -37,6 +37,40 @@ let selected_cell = -1;
 
 
 const getGameInfo = () => JSON.parse(localStorage.getItem('game'));
+
+const checkConflict = (board, row, col, value) => {
+    // Verifica a linha
+    for (let c = 0; c < CONSTANT.GRID_SIZE; c++) {
+        if (c !== col && board[row][c] === value) {
+            return true; // Conflito na linha
+        }
+    }
+
+    // Verifica a coluna
+    for (let r = 0; r < CONSTANT.GRID_SIZE; r++) {
+        if (r !== row && board[r][col] === value) {
+            return true; // Conflito na coluna
+        }
+    }
+
+    // Verifica o bloco 3x3
+    let box_start_row = row - (row % CONSTANT.BOX_SIZE);
+    let box_start_col = col - (col % CONSTANT.BOX_SIZE);
+
+    for (let r = 0; r < CONSTANT.BOX_SIZE; r++) {
+        for (let c = 0; c < CONSTANT.BOX_SIZE; c++) {
+            const current_row = box_start_row + r;
+            const current_col = box_start_col + c;
+            // Não compara a célula com ela mesma
+            if (current_row !== row || current_col !== col) { 
+                if (board[current_row][current_col] === value) {
+                    return true; // Conflito no bloco
+                }
+            }
+        }
+    }
+    return false; // Nenhum conflito encontrado
+};
 
 //
 const initGameGrid = () => {
@@ -176,9 +210,6 @@ const checkErr = (value) => {
     }
 
     let index = selected_cell;
-    total_erros++;
-    //atualizarerros();
-    console.log(total_erros);
     let row = Math.floor(index / CONSTANT.GRID_SIZE);
     let col = index % CONSTANT.GRID_SIZE;
 
@@ -223,34 +254,50 @@ const initNumberInputEvent = () => {
     number_inputs.forEach((e, index) => {
         e.addEventListener('click', () => {
             if (!cells[selected_cell].classList.contains('filled')) {
-                cells[selected_cell].innerHTML = index + 1;
-                cells[selected_cell].setAttribute('data-value', index + 1);
-                // add to answer
+                let newValue = index + 1; 
                 let row = Math.floor(selected_cell / CONSTANT.GRID_SIZE);
                 let col = selected_cell % CONSTANT.GRID_SIZE;
-                su_answer[row][col] = index + 1;
-                // save game
-                saveGameInfo();
-                // ------------
-                removeErr();
-                checkErr(index + 1);
+
+                const temp_su_answer = JSON.parse(JSON.stringify(su_answer)); 
+                temp_su_answer[row][col] = newValue; 
+
+                let isCurrentMoveAnError = false;
+                if (checkConflict(temp_su_answer, row, col, newValue)) {
+                    isCurrentMoveAnError = true; 
+                    total_erros++; 
+                    atualizarerros();
+                }
+                cells[selected_cell].innerHTML = newValue;
+                cells[selected_cell].setAttribute('data-value', newValue);
+                su_answer[row][col] = newValue; 
+
+                saveGameInfo(); 
+
+                removeErr(); 
+                checkErr(newValue); 
+
+                if (isCurrentMoveAnError) {
+                    cells[selected_cell].classList.add('err');
+                    cells[selected_cell].classList.add('cell-err'); 
+                    setTimeout(() => {
+                        cells[selected_cell].classList.remove('cell-err');
+                    }, 500);
+                }
                 cells[selected_cell].classList.add('zoom-in');
                 setTimeout(() => {
                     cells[selected_cell].classList.remove('zoom-in');
                 }, 500);
-
-                //Checar se o jogo está ganho
                 if (isGameWin()) {
-                    win_game++;
-                    console.log(win_game);
-                    console.log(tempoJogo);
+                    win_game = '1';
+                    atualizartempo();
+                    atualizarwin();
                     removeGameInfo();
                     showResult();
                 }
             }
-        })
-    })
-}
+        });
+    });
+};
 
 const saveGameInfo = () => {
     let game = {
@@ -332,13 +379,18 @@ document.querySelector('#btn-level').addEventListener('click', (e) => {
 })
 
 document.querySelector('#btn-play').addEventListener('click', () => {
-    win_game = 0;
+    win_game = '';
     total_erros = 0;
     tempoJogo = 0;
     comecarjogoinsert();
-    buscaridjogo();
     initSudoku();
     startGame();
+    var loadidjogo = setInterval(() => {
+        buscaridjogo();
+    }, 500);
+    setTimeout(() => {
+        clearInterval(loadidjogo);
+    }, 1000);
 });
 
 document.querySelector('#btn-continue').addEventListener('click', () => {
@@ -417,32 +469,86 @@ function comecarjogoinsert() {
             alert("Erro no catch");
         });
 }
-// function atualizarerros() 
-// {
-//     fetch("/usuarios/errosup", {
-//         method: "PUT",
-//         headers: {
-//             "Content-Type": "application/json"
-//         },
-//         body: JSON.stringify({
-//             id: id_usuario,
-//             erros: total_erros
-//         })
-//     })    
-//     .then(res => {
-//         if(!res.ok)
-//         {
-//             throw new Error("Erro ao atualizar");
-//         }
-//         return res.json();
-//     })
-//     .then(data => {
-//         console.log("Atualizando com sucesso:", data);
-//     })
-//     .catch(err => {
-//         console.log("Erro:", err);
-//     })
-// }
+function atualizarwin() {
+    var idjogo = sessionStorage.ID_JOGO;
+
+    fetch("/usuarios/updatewin", {
+        method: "PUT",
+        headers: {
+            "Content-Type": "application/json"
+        },
+        body: JSON.stringify({
+            id: id_usuario,
+            win: win_game,
+            idplayer: idjogo
+        })
+    })
+        .then(res => {
+            if (!res.ok) {
+                throw new Error("Erro ao atualizar");
+            }
+            return res.json();
+        })
+        .then(data => {
+            console.log("Atualizando com sucesso:", data);
+        })
+        .catch(err => {
+            console.log("Erro:", err);
+        })
+}
+function atualizartempo() {
+    var idjogo = sessionStorage.ID_JOGO;
+
+    fetch("/usuarios/updatetempo", {
+        method: "PUT",
+        headers: {
+            "Content-Type": "application/json"
+        },
+        body: JSON.stringify({
+            id: id_usuario,
+            tempo: tempoJogo,
+            idplayer: idjogo
+        })
+    })
+        .then(res => {
+            if (!res.ok) {
+                throw new Error("Erro ao atualizar");
+            }
+            return res.json();
+        })
+        .then(data => {
+            console.log("Atualizando com sucesso:", data);
+        })
+        .catch(err => {
+            console.log("Erro:", err);
+        })
+}
+function atualizarerros() {
+    var idjogo = sessionStorage.ID_JOGO;
+    fetch("/usuarios/errosup", {
+        method: "PUT",
+        headers: {
+            "Content-Type": "application/json"
+        },
+        body: JSON.stringify({
+            id: id_usuario,
+            erros: total_erros,
+            idplayer: idjogo
+        })
+    })
+        .then(res => {
+            if (!res.ok) {
+                throw new Error("Erro ao atualizar");
+            }
+            return res.json();
+        })
+        .then(data => {
+            console.log("Atualizando com sucesso:", data);
+        })
+        .catch(err => {
+            console.log("Erro:", err);
+        })
+}
 var id_jogo = 0;
 var idplayer = sessionStorage.ID_USUARIO;
 function buscaridjogo() {
