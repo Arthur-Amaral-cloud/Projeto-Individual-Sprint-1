@@ -46,19 +46,19 @@
                     <div class="kpi-box">
                         <div class="kpi-element">
                             <h3>Jogos Finalizados</h3>
-                            <div class="kpi-content">1000</div>
+                            <div class="kpi-content" id="kpi_jogos_finalizados"></div>
                         </div>
                     </div>
                     <div class="kpi-box">
                         <div class="kpi-element">
                             <h3>Média de erros por jogo</h3>
-                            <div class="kpi-content">50,3</div>
+                            <div class="kpi-content" id="kpi_media_erro"></div>
                         </div>
                     </div>
                     <div class="kpi-box">
                         <div class="kpi-element">
                             <h3>Tempo de jogo total</h3>
-                            <div class="kpi-content">220h</div>
+                            <div class="kpi-content" id="kpi_tempo_total">220h</div>
                         </div>
                     </div>
                 </div>
@@ -75,6 +75,8 @@
 <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/chartjs-plugin-datalabels@2.2.0"></script>
 <script>
+    var tempo_total_de_jogo = 0;
+    var kpi_tempo = '';
     document.querySelector('#button_redirect_jogo').addEventListener('click', () => {
         window.location.href = 'sudoku.html';
     });
@@ -83,6 +85,98 @@
     });
     function atualizarpagina() {
         nome_user.innerHTML = sessionStorage.username;
+        var idplayer = sessionStorage.ID_USUARIO;
+        //
+        fetch(`/usuarios/obterjogoswins/${idplayer}`, {
+            method: "GET",
+            headers: {
+                "Content-type": "application/json"
+            }
+        })
+            .then(data => {
+                return data.json();
+            })
+            .then(data => {
+                console.log("Dado puxado com sucesso:", data);
+                sessionStorage.setItem('JOGOS_FINALIZADOS', data[0].jogosf);
+            })
+            .catch(error => {
+                console.log("Erro no catch:", error);
+            })
+        //
+        fetch(`/usuarios/obtermediaerro/${idplayer}`, {
+            method: "GET",
+            headers: {
+                "Content-type": "application/json"
+            }
+        })
+            .then(data => {
+                return data.json();
+            })
+            .then(data => {
+                console.log("Dado puxado com sucesso:", data);
+                sessionStorage.setItem('MEDIA_ERROS', data[0].media_erros);
+            })
+            .catch(error => {
+                console.log("Erro no catch:", error);
+            })
+
+        //
+        fetch(`/usuarios/obtertempodejogo/${idplayer}`, {
+            method: "GET",
+            headers: {
+                "Content-type": "application/json"
+            }
+        })
+            .then(data => {
+                return data.json();
+            })
+            .then(data => {
+                console.log("Dado puxado com sucesso:", data);
+                sessionStorage.setItem('TEMPO_CARREIRA', data[0].tempo_total);
+                converterhoras();
+            })
+            .catch(error => {
+                console.log("Erro no catch:", error);
+            })
+
+        var plotar_kpis = setInterval(() => {
+            kpi_jogos_finalizados.innerHTML = sessionStorage.JOGOS_FINALIZADOS;
+            kpi_media_erro.innerHTML = sessionStorage.MEDIA_ERROS;
+            if (horas < 1) {
+                kpi_tempo_total.innerHTML = `<1h`
+            } else {
+                if (minutos == 0) {
+                    kpi_tempo_total.innerHTML = `${horas}h`
+                }
+                else {
+                    kpi_tempo_total.innerHTML = `${horas}h${minutos}m`
+                }
+            }
+        }, 500);
+        setTimeout(() => {
+            clearInterval(plotar_kpis);
+        }, 1000);
+    }
+    var minutos = 0;
+    var horas = 0;
+    function converterhoras() {
+        var segundos_input = sessionStorage.TEMPO_CARREIRA;
+        var segundos = segundos_input;
+        minutos = 0
+        horas = 0;
+        while (1) {
+            while (segundos >= 60) {
+                segundos -= 60;
+                minutos++;
+            }
+            while (minutos >= 60) {
+                minutos -= 60;
+                horas++;
+            }
+            break;
+        }
+
     }
     const ctx = document.getElementById("myChart")
     const grafico = new Chart(ctx, {
@@ -126,9 +220,9 @@
                     }
                 }
             },
-            cutout: '60%' 
+            cutout: '60%'
         },
-        plugins: [ChartDataLabels] 
+        plugins: [ChartDataLabels]
     });
 
 
