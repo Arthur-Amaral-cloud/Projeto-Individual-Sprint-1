@@ -5,6 +5,7 @@
 body
 {
     background-color: #f0f8ff;
+    overflow-x: hidden;
 }
 a {
     font-family: sans-serif;
@@ -12,6 +13,7 @@ a {
 
     display: flex;
     align-items: flex-end;
+    transition: 0.3s    ;
 }
 
 .nav {
@@ -34,7 +36,7 @@ a {
 }
 
 .logo {
-    height: 12vh;
+    height: 10vh;
     display: flex;
     justify-content: flex-start;
     margin-left: 3rem;
@@ -77,6 +79,7 @@ a {
     display: flex;
     justify-content: flex-end;
     align-items: center;
+    transition: 0.3s;
 }
 
 .buttonJogar:hover {

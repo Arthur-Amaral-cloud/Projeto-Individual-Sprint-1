@@ -1,22 +1,23 @@
 #board
 {
-    width: 28.125rem;
-    height: 28.125rem;
-    border: 0.125rem solid black;
+    width: 27vw;
+    height: 27vw;
+    border: 0.1vw solid black;
     background-color: white;
     margin-bottom: 5vh;
 
-    margin: 0 auto;
+    margin: 0;
     display: flex;
     flex-wrap: wrap;
 }
 .tile
 {
-    width: 3rem;
-    height: 3rem;
-    border: solid 0.063rem rgb(187, 187, 187);
+    width: calc(100%/9);
+    height: calc(100%/9);
+    border: solid 0.05vw rgb(187, 187, 187);
+    box-sizing: border-box;
 
-    font-size: 1.25rem;
+    font-size: 1.2vw;
     font-weight: bold;
     display: flex;
     justify-content: center;
