@@ -37,9 +37,12 @@ a {
 
 .logo {
     height: 10vh;
+    width: 10vh;
     display: flex;
     justify-content: flex-start;
     margin-left: 3rem;
+    transition: opacity 0.3s ease-in-out;
+    opacity: 1;
 }
 
 .nav-list {
@@ -71,10 +74,11 @@ a {
     padding-left: 2vh;
     margin-right: 3rem;
     border-radius: 100px;
-    background-color: #4682b4;
+    background-color: #2e2e2e;
     font-family: sans-serif;
     font-size: 3vh;
     border: 0px;
+    color: #f0f8ff;
 
     display: flex;
     justify-content: flex-end;
@@ -83,8 +87,8 @@ a {
 }
 
 .buttonJogar:hover {
-    background-color: #afeeee;
-    color: #fff;
+    background-color: #f0f8ff;
+    color: #2e2e2e;
 }
 .texto-a:hover
 {

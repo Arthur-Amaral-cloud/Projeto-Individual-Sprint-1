@@ -16,13 +16,17 @@
 <body>
     <header class="header">
         <nav class="nav">
-            <a href="index.html"><img src="assets/Sudoku logo.png" alt="logo" class="logo"></a>
-            <ul class="nav-list">
-                <li><a href="index.html" class="texto-a"><b>História</b></a></li>
-                <div class="barraVertical"></div>
-                <li><a href="Como jogar.html" class="texto-a"><b>Como Jogar</b></a></li>
-            </ul>
-            <a href="Login.html"><button class="buttonJogar"><b>Jogar!</b></button></a>
+            <div class="logo-flexbox" id="logo_flexbox"><a href="index.html"><img src="assets/Sudoku logo.png"
+                        alt="logo" class="logo" id="logo_sudoku"></a></div>
+            <div class="textos-flexbox">
+                <ul class="nav-list">
+                    <li><a href="index.html" class="texto-a"><b>História</b></a></li>
+                    <div class="barraVertical"></div>
+                    <li><a href="Como jogar.html" class="texto-a"><b>Como Jogar</b></a></li>
+                </ul>
+            </div>
+            <div class="button-flexbox"><a href="Login.html"><button class="buttonJogar"><b>Jogar!</b></button></a>
+            </div>
         </nav>
     </header>
     <div class="HowtoPlayBoard">
@@ -62,3 +66,22 @@
 </body>
 
 </html>
+<script>
+    var logo = document.getElementById("logo_flexbox");
+
+    logo.addEventListener("mouseenter", () => {
+        logo_sudoku.style.opacity = 0;
+        setTimeout(() => {
+            logo_sudoku.src = "/assets/Sudoku_logo_branca.png";
+            logo_sudoku.style.opacity = 1
+        }, 200);
+    });
+    logo.addEventListener("mouseleave", () => {
+        logo_sudoku.style.opacity = 0;
+        setTimeout(() => {
+            logo_sudoku.src = "/assets/Sudoku logo.png";
+            logo_sudoku.style.opacity = 1;
+        }, 200);
+    })
+
+</script>
