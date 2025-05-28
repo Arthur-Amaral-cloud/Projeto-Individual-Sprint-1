@@ -279,3 +279,52 @@ nav {
 {
     width: 2vw;
 }
+.error-no-games
+{
+    font-size: 2.5vw;
+}
+.red
+{
+    height: 3vh;
+    width: 3vh;
+    background-color: #fc030b;
+}
+.yellow
+{
+    height: 3vh;
+    width: 3vh;
+    background-color: #fcf003;
+}
+.green
+{
+    height: 3vh;
+    width: 3vh;
+    background-color: #18fc03;
+}
+.legenda
+{
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    justify-content: flex-start;
+
+    gap: 1vh;
+}
+.facil
+{
+    display: flex;
+    flex-direction: row;
+    gap: 0.5vw;
+}
+.medio
+{
+    display: flex;
+    flex-direction: row;
+    gap: 0.5vw;
+}
+.dificil
+{
+    display: flex;
+    flex-direction: row;
+    gap: 0.5vw;
+}

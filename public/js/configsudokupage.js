@@ -314,7 +314,7 @@ const saveGameInfo = () => {
 
 const removeGameInfo = () => {
     localStorage.removeItem('game');
-    document.querySelector('#btn-continue').style.display = 'none';
+    // document.querySelector('#btn-continue').style.display = 'none';
 }
 
 const showResult = () => {
@@ -393,11 +393,11 @@ document.querySelector('#btn-play').addEventListener('click', () => {
     }, 1000);
 });
 
-document.querySelector('#btn-continue').addEventListener('click', () => {
-    loadSudoku();
-    startGame();
+// document.querySelector('#btn-continue').addEventListener('click', () => {
+//     loadSudoku();
+//     startGame();
 
-});
+// });
 
 document.querySelector('#btn-pause').addEventListener('click', () => {
     pause_screen.classList.add('active');
@@ -432,7 +432,7 @@ const init = () => {
     document.body.classList.add(darkmode ? 'dark' : 'light');
 
     const game = getGameInfo();
-    document.querySelector('#btn-continue').style.display = game ? 'grid' : 'none';
+    // document.querySelector('#btn-continue').style.display = game ? 'grid' : 'none';
 
     initGameGrid();
     initCellsEvent();
@@ -459,7 +459,6 @@ function comecarjogoinsert() {
             console.log("resposta: ", resposta);
 
             if (resposta.ok) {
-                alert("Jogo inserido");
             } else {
                 throw "Não foi possível mandar os dados para o banco";
             }

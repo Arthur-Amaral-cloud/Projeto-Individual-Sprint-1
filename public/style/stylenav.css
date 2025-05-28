@@ -6,6 +6,7 @@ body
 {
     background-color: #f0f8ff;
     overflow-x: hidden;
+    animation: animation-delay 1s linear forwards;
 }
 a {
     font-family: sans-serif;

@@ -1,5 +1,5 @@
 :root {
-    --bg-main: #f0f2f5;
+    --bg-main: #afc7ebab;
     --bg-body: #f0f8ff;
     --color-txt: #000;
     --filled-color: #000;
@@ -487,3 +487,4 @@ nav {
         height: 100vh;
     }
 }
+/* #afc7ebab */

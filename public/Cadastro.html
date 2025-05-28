@@ -57,12 +57,17 @@
                             <div id="div_text_confirmar_senha" class="text-error-cadastro"></div>
                         </div>
                     </div>
-                    <div class="check-box">
+                    <div class="check-box" id="check_box_div">
                         <div class="check-title" id="div_text_title"></div>
                         <div class="check-subtitle" id="div_text_caps"></div>
                         <div class="check-subtitle" id="div_text_min"></div>
                         <div class="check-subtitle" id="div_text_num"></div>
                         <div class="check-subtitle" id="div_text_char"></div>
+                        <div class="alerta_erro">
+                            <div class="card_erro" id="cardErro">
+                                <span id="mensagem_erro"></span>
+                            </div>
+                        </div>
                     </div>
                 </div>
             </div>
@@ -93,7 +98,7 @@
     function usernameverify() {
         var username = ipt_username.value;
         if (username.length == 0) {
-            div_error_username.innerHTML = `Você precisa ter um nome de usuário`
+            div_error_username.innerHTML = `Você precisa ter um username`
             div_error_username.style = `color:#ff6f61`;
         }
         else if (username.length <= 45) {
@@ -270,6 +275,10 @@
             ax_senha = true;
         }
         if (ax_email && ax_senha && ax_username && ax_confirmacaoSenha) {
+            div_text_caps.innerHTML = '';
+            div_text_char.innerHTML = '';
+            div_text_min.innerHTML = '';
+            div_text_num.innerHTML = '';
             cadastrar();
         }
 
@@ -313,8 +322,7 @@
                 console.log("resposta: ", resposta);
 
                 if (resposta.ok) {
-                    alert("Cadastro realizado com sucesso! Redirecionando para tela de Login...");
-
+                    div_text_title.innerHTML = `<div class="check-title" id="div_text_title">Cadastro realizado. Redirecionando para tela de Login.</div>`
                     setTimeout(() => {
                         window.location = "Login.html";
                     }, "1000");

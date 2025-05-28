@@ -17,7 +17,7 @@
 <body onload="atualizarpagina()">
     <nav>
         <div class="nav-container">
-            <a href="Login.html" class="nav-logo">
+            <a href="" class="nav-logo">
                 <img src="assets/Sudoku logo blue mode.png" alt="logo-sudoku" class="logo">
             </a>
             <div class="dark-mode-toggle" id="dark-mode-toggle">
@@ -62,8 +62,22 @@
                         </div>
                     </div>
                 </div>
-                <div class="grafico-dinamico">
+                <div class="grafico-dinamico" id="grafico_dash">
                     <canvas id="myChart"></canvas>
+                    <div class="legenda">
+                        <div class="facil">
+                            <div class="green"></div>
+                            <div>Fácil</div>
+                        </div>
+                        <div class="medio">
+                            <div class="yellow"></div>
+                            <div>Médio</div>
+                        </div>
+                        <div class="dificil">
+                            <div class="red"></div>
+                            <div>Díficil</div>
+                        </div>
+                    </div>
                 </div>
             </div>
         </div>
@@ -143,7 +157,13 @@
 
         var plotar_kpis = setInterval(() => {
             kpi_jogos_finalizados.innerHTML = sessionStorage.JOGOS_FINALIZADOS;
-            kpi_media_erro.innerHTML = sessionStorage.MEDIA_ERROS;
+            if (sessionStorage.MEDIA_ERROS == 'null') {
+                kpi_media_erro.innerHTML = 0;
+            }
+            else {
+                kpi_media_erro.innerHTML = sessionStorage.MEDIA_ERROS;
+            }
+
             if (horas < 1) {
                 kpi_tempo_total.innerHTML = `<1h`
             } else {
@@ -250,9 +270,24 @@
     }
     function plotargraficos() {
         if (sessionStorage.JOGOS_FINALIZADOS_TOTAL == 0) {
-
+            grafico_dash.innerHTML = `<div class="error-no-games">Jogue um jogo para habilitar o gráfico!<div>`
         }
         else {
+            grafico_dash.innerHTML = `<canvas id="myChart"></canvas>
+                    <div class="legenda">
+                        <div class="facil">
+                            <div class="green"></div>
+                            <div>Fácil</div>
+                        </div>
+                        <div class="medio">
+                            <div class="yellow"></div>
+                            <div>Médio</div>
+                        </div>
+                        <div class="dificil">
+                            <div class="red"></div>
+                            <div>Díficil</div>
+                        </div>
+                    </div>`;
             let dados_graficos = [];
             // Operação regra de três
             let jogos_facil = ((sessionStorage.JOGOS_FINALIZADOS_FACIL * 100) / sessionStorage.JOGOS_FINALIZADOS_TOTAL).toFixed(1);
@@ -268,7 +303,7 @@
                     labels: ['Fácil', 'Médio', 'Difícil'],
                     datasets: [{
                         data: dados_graficos,
-                        backgroundColor: ['#4CAF50', '#FFC107', '#F44336'],
+                        backgroundColor: ['#18fc03', '#fcf003', '#fc030b'],
                         borderColor: '#00aeef',
                         borderWidth: 10
                     }]
@@ -290,6 +325,7 @@
                             }
                         },
                         legend: {
+                            display: false,
                             position: 'left',
                             labels: {
                                 color: '#ffffff'
@@ -301,11 +337,11 @@
                                 weight: 'bold',
                                 size: 26
                             },
-                            formatter: function( value, context) {
-                            return value + "%"
-                        }
+                            formatter: function (value, context) {
+                                return value + "%"
+                            }
                         },
-                        
+
                     },
                     cutout: '60%'
                 },
