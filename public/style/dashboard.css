@@ -208,6 +208,7 @@ nav {
     font-size: 2.5vh;
     cursor: pointer;
     color: var(--white);
+    transition: 0.3s;
 }
 .button-style:hover
 {
@@ -327,4 +328,16 @@ nav {
     display: flex;
     flex-direction: row;
     gap: 0.5vw;
+}
+.bxs-message-rounded
+{
+    color: var(--blue);
+    cursor: pointer;
+    font-weight: 400;
+}
+.bx-joystick
+{
+    color: var(--blue);
+    cursor: pointer;
+    font-weight: 400;
 }

@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="shortcut icon" href="assets/Sudoku logo.png" type="image/x-icon">
+    <title>Sudoku - Fórum</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Potta+One&display=swap" rel="stylesheet">
+    <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
+    <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
+    <link rel="stylesheet" href="style/app.css">
+    <link rel="stylesheet" href="style/forum.css">
+</head>
+
+<body onload="atualizarpagina()">
+    <nav>
+        <nav>
+            <div class="nav-container">
+                <img src="assets/Sudoku logo blue mode.png" alt="logo-sudoku" class="logo">
+                <div class="dark-mode-toggle" id="dark-mode-toggle">
+                    <div id="darkmode">
+                        <i class="bx bxs-sun"></i>
+                        <i class="bx bxs-moon"></i>
+                    </div>
+                    <a href="Página Perfil.html"><i class='bx bx-user-circle'></i> </a>
+                    <a href="sudoku.html"><i class='bx bx-joystick'></i></a>
+                </div>
+            </div>
+        </nav>
+    </nav>
+    <div class="main-screen">
+        <h2 class="title-forum">Fórum da Comunidade</h2>
+        <div class="welcome-box">
+            Este é um espaço criado para muito mais do que só resolver sudoku, aqui compartilhamos
+            experiências, memórias e histórias de vida que se entrelaçam com o universo do Sudoku.
+
+            Seja você alguém que encontrou no Sudoku um momento de paz no meio da correria, uma forma de treinar a
+            mente, ou até um companheiro em tempos difíceis, este fórum é seu lugar. Aqui, cada número tem seu valor e
+            cada pessoa também.
+
+            Sinta-se à vontade para participar, contar sua trajetória com o jogo, trocar dicas, celebrar conquistas ou
+            simplesmente se conectar com outros apaixonados por Sudoku. Acreditamos que por trás de cada sudoku
+            resolvido existe uma história única e estamos aqui para ouvi-la.
+        </div>
+        <div class="button-box-forum" id="button_adicionar">
+            <button class="button-style" onclick="mostrar()">Adicionar Experiência</button>
+        </div>
+        <div class="adicionar-box inativo" id="mandar_relato">
+            <p class="title-relatar">Relatar Experiência</p>
+            <div class="inputs-box">
+                <div class="input-box1">
+                    <p class="subtitle-mandar">Adicione um título na sua postagem:</p>
+                    <input type="text" id="ipt_titulo_post" placeholder="Digite o título da sua experiência"
+                        maxlength="50" required>
+                </div>
+                <div class="input-box2">
+                    <p class="subtitle-mandar">Conte sua Experiência:</p>
+                    <textarea name="descricao" id="ipt_experiencia_post" maxlength="500" rows="10"
+                        placeholder="Digite sua Experiência aqui" required></textarea>
+                </div>
+                <div class="button-box-experiencia">
+                    <button onclick="mandarexperiencia()" class="button-style ajuste">Mandar Experiência</button>
+                    <button onclick="fecharexperiencia()" class="button-style ajuste">Fechar</button>
+                </div>
+            </div>
+
+        </div>
+        <div class="forum-box">
+            <h2 class="title-forum" style="color: #000;">Mensagens do Fórum</h2>
+            <div class="msg-box">
+                <p class="title_card">Título: A</p>
+                <p class="autor_card">Feito por: (Username), Email: example.com</p>
+                <p class="content_card">O Sudoku é mais do que um simples jogo de números. Para muitos, ele representa
+                    foco, disciplina e momentos de tranquilidade em meio ao caos do dia a dia. Cada grade preenchida é
+                    uma pequena vitória, um exercício de paciência e lógica. Ao longo do tempo, o hábito de resolver
+                    esses desafios se transforma em algo maior: uma terapia silenciosa, uma pausa necessária. Aqui,
+                    celebramos essas conexões e histórias que surgem entre números e vidas.</p>
+            </div>
+        </div>
+    </div>
+</body>
+
+</html>
+<script src="js/darkmode.js"></script>
+<script>
+    function mostrar() {
+        document.getElementById('mandar_relato').classList.remove('inativo');
+        document.getElementById('mandar_relato').classList.add('ativo');
+        document.getElementById('button_adicionar').classList.remove('ativo');
+        document.getElementById('button_adicionar').classList.add('inativo');
+    }
+    function fecharexperiencia() {
+        document.getElementById('mandar_relato').classList.remove('ativo');
+        document.getElementById('mandar_relato').classList.add('inativo');
+        document.getElementById('button_adicionar').classList.remove('inativo');
+        document.getElementById('button_adicionar').classList.add('ativo');
+    }
+</script>
