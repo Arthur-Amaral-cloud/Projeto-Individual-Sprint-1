@@ -25,15 +25,17 @@ constraint chkJogoFinalizado
 check(JogoFinalizado in('0','1'))
 );
 
-create table if not exists ListadeAmizades (
-FkUsuario int,
-FkAmigo int,
-constraint PkCompostaListadeAmizades primary key (FkUsuario,FkAmigo),
-constraint FkUsuarioPlayer
-foreign key (FkUsuario) references player(idPlayer),
-constraint FKAmigoPlayer 
-foreign key (FkAmigo) references player(idPlayer),
-DtAmizade datetime default current_timestamp
+create table if not exists postagem (
+idPostagem int AUTO_INCREMENT,
+Fkplayer int,
+constraint PkcompostaPostagem primary key(idPostagem, Fkplayer),
+constraint FkPostagemUsuario 
+foreign key (Fkplayer) references player(idPlayer),
+titulo varchar(45),
+post varchar(500),
+visibilidade TINYINT,
+constraint chkVisibilidade
+check(visibilidade in('0','1'))
 );
 
 select * from player;
