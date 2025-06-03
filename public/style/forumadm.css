@@ -81,3 +81,23 @@
 {
     width: 90%;
 }
+.button-style
+{
+    font-family: "Potta One", system-ui;
+    height: 6vh;
+    width: 15vw;
+    border-radius: 40px;
+    border: none;
+    background-color: #4682B4;
+    font-weight: bolder;
+    font-size: 2.5vh;
+    cursor: pointer;
+    color: var(--white);
+    transition: 0.3s;
+    margin-bottom: 2vh;
+}
+.button-style:hover
+{
+    background-color: #caf0f8;
+    color: #000;
+}

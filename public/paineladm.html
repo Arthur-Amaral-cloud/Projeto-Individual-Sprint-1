@@ -33,6 +33,7 @@
     </nav>
     <div class="main-screen">
         <h2 class="title-forum">Gerenciar posts</h2>
+        <button onclick="puxarforum()" class="button-style">Atualizar posts</button>
         <div class="posts" id="box_verificar">
             <div class="msg-box">
                 <div class="title_card">
@@ -94,7 +95,10 @@
                                 })
                                 .then(data => {
                                     console.log("Atualizei Para ficar vísivel");
-                                    atualizarforum();
+                                    if (i == posts.length) {
+                                       atualizarforum(); 
+                                       window.location.href = 'forum.html';
+                                    }
                                 })
                                 .catch(err => {
                                     console.log("Erro:", err);
@@ -119,7 +123,10 @@
                                 })
                                 .then(data => {
                                     console.log("Atualizei Para ficar oculto", data.idPostagem);
-                                    atualizarforum();
+                                    if (i == posts.length) {
+                                       atualizarforum(); 
+                                       window.location.href = 'forum.html';
+                                    }
                                 })
                                 .catch(err => {
                                     console.log("Erro:", err);
@@ -151,17 +158,6 @@
                     <p class="content_card">${posts[i].post}</p>
                     </div>`;
 
-        }
-        if (!ax_start) {
-            setTimeout(() => {
-                puxarforum();
-            }, 1);
-        }
-        else
-        {
-            setTimeout(() => {
-            puxarforum();
-        }, 10000);
         }
         ax_start = true;
     }

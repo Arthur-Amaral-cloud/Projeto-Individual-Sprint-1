@@ -28,7 +28,7 @@
     --bg-main: #2a2a38;
     --bg-body: #1a1a2e;
     --color-txt: #6a6a6a;
-    --filled-color: #4f4f63;
+    --filled-color: #fff;
     --filled-bg: #000;
 }
 
@@ -351,7 +351,7 @@ nav {
     height: var(--sudoku-cell-size);
     border-radius: var(--border-radius);
     background-color: var(--bg-main);
-    color: var(--color-txt);
+    color: var(--filled-color);
     display: grid;
     place-items: center;
     font-size: var(--font-size);
