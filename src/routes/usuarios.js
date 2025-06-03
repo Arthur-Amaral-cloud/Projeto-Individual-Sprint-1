@@ -51,5 +51,16 @@ router.get(`/obterjogosdificil/:idplayer`, function (req,res) {
 router.get(`/obterjogograficos/:idplayer`, function (req,res) {
     usuarioController.obterjogograficos(req,res);
 }) 
+router.post("/inserirpost", function (req,res){
+    usuarioController.inserirpost(req,res);
+});
+router.get(`/obterpermissao/:idplayer`, function (req,res) {
+    usuarioController.obterpermissao(req,res);
+}); 
+router.get(`/obterdadosforum`, function (req,res) {
+    usuarioController.obterdadosforum(req,res);
+}) 
+router.put("/atualizarvisibilidade", function (req,res) {
+    usuarioController.atualizarvisibilidade(req,res);
+})
 module.exports = router;
-

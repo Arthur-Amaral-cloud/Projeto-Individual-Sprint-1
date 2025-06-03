@@ -138,6 +138,45 @@ function obterjogograficos(idplayer) {
     console.log("Executando a instrução SQL: \n" + instrucaoSql);
     return database.executar(instrucaoSql);
 }
+function inserirpost(id, titulo, postagem) {
+    console.log("ACESSEI O USUARIO MODEL \n \n\t\t >> Se aqui der erro de 'Error: connect ECONNREFUSED',\n \t\t >> verifique suas credenciais de acesso ao banco\n \t\t >> e se o servidor de seu BD está rodando corretamente. \n\n function cadastrar():", id, titulo, postagem);
+    
+    // Insira exatamente a query do banco aqui, lembrando da nomenclatura exata nos valores
+    //  e na ordem de inserção dos dados.
+    var instrucaoSql = `
+        INSERT INTO postagem(Fkplayer,titulo,post) VALUES ('${id}','${titulo}','${postagem}');
+    `;
+    console.log("Executando a instrução SQL: \n" + instrucaoSql);
+    return database.executar(instrucaoSql);
+}
+function obterpermissao(idplayer) {
+    console.log("ACESSEI O USUARIO MODEL \n \n\t\t >> Se aqui der erro de 'Error: connect ECONNREFUSED',\n \t\t >> verifique suas credenciais de acesso ao banco\n \t\t >> e se o servidor de seu BD está rodando corretamente. \n\n function cadastrar():", idplayer);
+
+    var instrucaoSql = `
+        select adm from player where idPlayer = '${idplayer}';
+    `;
+    console.log("Executando a instrução SQL: \n" + instrucaoSql);
+    return database.executar(instrucaoSql);
+}
+function obterdadosforum() {
+    console.log("ACESSEI O USUARIO MODEL \n \n\t\t >> Se aqui der erro de 'Error: connect ECONNREFUSED',\n \t\t >> verifique suas credenciais de acesso ao banco\n \t\t >> e se o servidor de seu BD está rodando corretamente. \n\n function cadastrar():");
+
+    var instrucaoSql = `
+        select idPostagem, titulo, post, visibilidade, username, email from postagem join player on postagem.Fkplayer = player.idPlayer;
+    `;
+    console.log("Executando a instrução SQL: \n" + instrucaoSql);
+    return database.executar(instrucaoSql);
+}
+function atualizarvisibilidade(id, visibilidade) {
+    console.log("ACESSEI O USUARIO MODEL \n \n\t\t >> Se aqui der erro de 'Error: connect ECONNREFUSED',\n \t\t >> verifique suas credenciais de acesso ao banco\n \t\t >> e se o servidor de seu BD está rodando corretamente. \n\n function cadastrar():", id, visibilidade);
+
+    var instrucaoSql = `
+        update postagem set visibilidade = '${visibilidade}'
+	    where idPostagem = '${id}';
+    `;
+    console.log("Executando a instrução SQL: \n" + instrucaoSql);
+    return database.executar(instrucaoSql);
+}
 
 module.exports = {
     autenticar,
@@ -154,5 +193,10 @@ module.exports = {
     obterjogofacil,
     obterjogomedio,
     obterjogosdificil,
-    obterjogograficos
+    obterjogograficos,
+    inserirpost,
+    obterpermissao,
+    obterdadosforum,
+    atualizarvisibilidade
+
 };

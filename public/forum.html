@@ -10,12 +10,11 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Potta+One&display=swap" rel="stylesheet">
     <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
-    <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
     <link rel="stylesheet" href="style/app.css">
     <link rel="stylesheet" href="style/forum.css">
 </head>
 
-<body onload="atualizarpagina()">
+<body onload="obterpermissao()">
     <nav>
         <nav>
             <div class="nav-container">
@@ -68,7 +67,7 @@
             </div>
 
         </div>
-        <div class="forum-box">
+        <div class="forum-box" id="forum_content">
             <h2 class="title-forum" style="color: #000;">Mensagens do Fórum</h2>
             <div class="msg-box">
                 <p class="title_card">Título: A</p>
@@ -86,6 +85,7 @@
 </html>
 <script src="js/darkmode.js"></script>
 <script>
+    var posts = [];
     function mostrar() {
         document.getElementById('mandar_relato').classList.remove('inativo');
         document.getElementById('mandar_relato').classList.add('ativo');
@@ -97,5 +97,120 @@
         document.getElementById('mandar_relato').classList.add('inativo');
         document.getElementById('button_adicionar').classList.remove('inativo');
         document.getElementById('button_adicionar').classList.add('ativo');
+    }
+    function mandarexperiencia() {
+        //Validadação
+        var titulo = ipt_titulo_post.value;
+        var post = ipt_experiencia_post.value;
+        var msg_error = 'Houve um erro ao enviar sua experiência:\n';
+        var ax_erro = false;
+        if (titulo.length <= 3) {
+            msg_error += `O título precisa conter ao menos 3 caracteres e no maxímo 45 caracteres\n`;
+            ax_erro = true
+        }
+        if (post.length <= 3) {
+            msg_error += `A postagem precisa conter ao menos 3 caracteres e no maxímo 45 caracteres\n`;
+            ax_erro = true;
+        }
+        if (ax_erro) {
+            alert(msg_error);
+        }
+        else {
+            inserirpost();
+        }
+    }
+    function inserirpost() {
+        var titulo = ipt_titulo_post.value;
+        var post = ipt_experiencia_post.value;
+        var idUser = sessionStorage.ID_USUARIO;
+
+        fetch("/usuarios/inserirpost", {
+            method: "POST",
+            headers: {
+                "Content-Type": "application/json",
+            },
+            body: JSON.stringify({
+                // crie um atributo que recebe o valor recuperado aqui
+                // Agora vá para o arquivo routes/usuario.js
+                id: idUser,
+                titulo: titulo,
+                postagem: post
+            }),
+        })
+            .then(function (resposta) {
+                console.log("resposta: ", resposta);
+
+                if (resposta.ok) {
+                    alert("Sua experência foi registrada com sucesso!");
+                    document.getElementById('mandar_relato').classList.remove('ativo');
+                    document.getElementById('mandar_relato').classList.add('inativo');
+                    document.getElementById('button_adicionar').classList.remove('inativo');
+                    document.getElementById('button_adicionar').classList.add('ativo');
+                    puxarforum();
+                } else {
+                    throw "Não foi possível mandar os dados para o banco";
+                }
+            })
+            .catch(function (resposta) {
+                console.log(`#ERRO: ${resposta}`);
+                alert("Erro no catch");
+            });
+    }
+    function obterpermissao() {
+        var idplayer = sessionStorage.ID_USUARIO;
+        fetch(`/usuarios/obterpermissao/${idplayer}`, {
+            method: "GET",
+            headers: {
+                "Content-type": "application/json"
+            }
+        })
+            .then(data => {
+                return data.json();
+            })
+            .then(data => {
+                if (data[0].adm == 1) {
+                    button_adicionar.innerHTML += `<button class="button-style" onclick="gerenciar()">Gerenciar Fórum</button>`
+                }
+                puxarforum();
+            })
+            .catch(error => {
+                console.log("Erro no catch:", error);
+            })
+    }
+    function gerenciar() {
+        window.location.href = 'paineladm.html';
+    }
+    function puxarforum() {
+        fetch(`/usuarios/obterdadosforum`, {
+            method: "GET",
+            headers: {
+                "Content-type": "application/json"
+            }
+        })
+            .then(data => {
+                return data.json();
+            })
+            .then(data => {
+                console.log("Dado puxado com sucesso:", data)
+                posts = data;
+                forum_content.innerHTML = `<h2 class="title-forum" style="color: #000;">Mensagens do Fórum</h2>`
+                for (let i = posts.length - 1; i >= 0; i--) {
+                    if (data[i].visibilidade == 1) {
+                        forum_content.innerHTML += `<div class="msg-box">
+                        <p class="title_card">Título:${data[i].titulo}</p>
+                        <p class="autor_card">Feito por:${data[i].username}, Email:${data[i].email}</p>
+                        <p class="content_card">${data[i].post}</p>
+                        </div>`
+                    }
+
+                }
+            })
+            .catch(error => {
+                console.log("Erro no catch:", error);
+            })
+
+        setInterval(() => {
+            puxarforum();
+        },10000);
     }
 </script>

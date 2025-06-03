@@ -1,0 +1,169 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="shortcut icon" href="assets/Sudoku logo.png" type="image/x-icon">
+    <title>Sudoku - Fórum ADM</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Potta+One&display=swap" rel="stylesheet">
+    <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
+    <link rel="stylesheet" href="style/app.css">
+    <link rel="stylesheet" href="style/forumadm.css">
+</head>
+
+<body onload="puxarforum()">
+    <nav>
+        <nav>
+            <div class="nav-container">
+                <img src="assets/Sudoku logo blue mode.png" alt="logo-sudoku" class="logo">
+                <div class="dark-mode-toggle" id="dark-mode-toggle">
+                    <div id="darkmode">
+                        <i class="bx bxs-sun"></i>
+                        <i class="bx bxs-moon"></i>
+                    </div>
+                    <a href="Página Perfil.html"><i class='bx bx-user-circle'></i> </a>
+                    <a href="sudoku.html"><i class='bx bx-joystick'></i></a>
+                    <a href="forum.html"><i class='bx bxs-message-rounded'></i></a>
+                </div>
+            </div>
+        </nav>
+    </nav>
+    <div class="main-screen">
+        <h2 class="title-forum">Gerenciar posts</h2>
+        <div class="posts" id="box_verificar">
+            <div class="msg-box">
+                <div class="title_card">
+                    <p class="titlebox">Título: A</p>
+                    <select id="select_id">
+                        <option value="mostrar">Mostrar</option>
+                        <option value="ocultar">Ocultar</option>
+                    </select>
+                </div>
+                <p class="autor_card">Feito por: (Username), Email: example.com</p>
+                <p class="content_card">O Sudoku é mais do que um simples jogo de números. Para muitos, ele representa
+                    foco, disciplina e momentos de tranquilidade em meio ao caos do dia a dia. Cada grade preenchida é
+                    uma pequena vitória, um exercício de paciência e lógica. Ao longo do tempo, o hábito de resolver
+                    esses desafios se transforma em algo maior: uma terapia silenciosa, uma pausa necessária. Aqui,
+                    celebramos essas conexões e histórias que surgem entre números e vidas.</p>
+            </div>
+        </div>
+    </div>
+    <script src="js/darkmode.js"></script>
+</body>
+
+</html>
+<script>
+    var ax_start = false;
+    var posts = [];
+    select_id.value = 'ocultar';
+    function puxarforum() {
+        fetch(`/usuarios/obterdadosforum`, {
+            method: "GET",
+            headers: {
+                "Content-type": "application/json"
+            }
+        })
+            .then(data => {
+                return data.json();
+            })
+            .then(data => {
+                console.log("Dado puxado com sucesso:", data)
+                posts = data;
+                if (ax_start) {
+                    for (let i = 1; i <= posts.length; i++) {
+                        const elemento1 = document.getElementById(`${i}`).value;
+                        if (elemento1 == 'mostrar') {
+                            fetch("/usuarios/atualizarvisibilidade", {
+                                method: "PUT",
+                                headers: {
+                                    "Content-Type": "application/json"
+                                },
+                                body: JSON.stringify({
+                                    id: i,
+                                    visibilidade: '1'
+                                })
+                            })
+                                .then(res => {
+                                    if (!res.ok) {
+                                        throw new Error("Erro ao atualizar");
+                                    }
+                                    return res.json();
+                                })
+                                .then(data => {
+                                    console.log("Atualizei Para ficar vísivel");
+                                    atualizarforum();
+                                })
+                                .catch(err => {
+                                    console.log("Erro:", err);
+                                })
+                        }
+                        if (elemento1 == 'ocultar') {
+                            fetch("/usuarios/atualizarvisibilidade", {
+                                method: "PUT",
+                                headers: {
+                                    "Content-Type": "application/json"
+                                },
+                                body: JSON.stringify({
+                                    id: i,
+                                    visibilidade: '0'
+                                })
+                            })
+                                .then(res => {
+                                    if (!res.ok) {
+                                        throw new Error("Erro ao atualizar");
+                                    }
+                                    return res.json();
+                                })
+                                .then(data => {
+                                    console.log("Atualizei Para ficar oculto", data.idPostagem);
+                                    atualizarforum();
+                                })
+                                .catch(err => {
+                                    console.log("Erro:", err);
+                                })
+                        }
+                    }
+                }
+                else {
+                    atualizarforum();
+                }
+            })
+            .catch(error => {
+                console.log("Erro no catch:", error);
+            })
+    }
+    function atualizarforum() {
+        box_verificar.innerHTML = ``;
+        for (let i = posts.length - 1; i >= 0; i--) {
+            box_verificar.innerHTML += `
+                    <div class="msg-box" id="box-${posts[i].idPostagem}">
+                    <div class="title_card">
+                    <p class="titlebox">Título: ${posts[i].titulo}</p>
+                    <select id="${posts[i].idPostagem}" class="select-id">
+                        <option value="mostrar" ${posts[i].visibilidade != 0 ? 'selected' : ''}>Mostrar</option>
+                        <option value="ocultar" ${posts[i].visibilidade == 0 ? 'selected' : ''}>Ocultar</option>
+                    </select>
+                    </div>
+                    <p class="autor_card">Feito por: ${posts[i].username}, Email: ${posts[i].email}</p>
+                    <p class="content_card">${posts[i].post}</p>
+                    </div>`;
+
+        }
+        if (!ax_start) {
+            setTimeout(() => {
+                puxarforum();
+            }, 1);
+        }
+        else
+        {
+            setTimeout(() => {
+            puxarforum();
+        }, 10000);
+        }
+        ax_start = true;
+    }
+
+</script>

@@ -6,9 +6,11 @@ create table if not exists player (
 idPlayer int primary key auto_increment,
 username varchar(45) not null,
 email varchar(100) not null unique,
-senha varchar(500) not null
+senha varchar(500) not null,
+adm tinyint DEFAULT '0',
+CONSTRAINT chkadm
+CHECK(adm in('0','1'))
 );
-
 create table if not exists LogJogos (
 idJogos int auto_increment,
 Fkplayer int,
@@ -33,7 +35,7 @@ constraint FkPostagemUsuario
 foreign key (Fkplayer) references player(idPlayer),
 titulo varchar(45),
 post varchar(500),
-visibilidade TINYINT,
+visibilidade TINYINT default '1',
 constraint chkVisibilidade
 check(visibilidade in('0','1'))
 );
@@ -47,3 +49,5 @@ insert into LogJogos(Fkplayer,QtdErros,Dificuldade,TempodeJogo,JogoFinalizado) v
 select * from LogJogos;
 
 select max(idJogos) from LogJogos where Fkplayer = 1 and JogoFinalizado = 0;
+
+select * from postagem;
