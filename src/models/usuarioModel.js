@@ -177,6 +177,15 @@ function atualizarvisibilidade(id, visibilidade) {
     console.log("Executando a instrução SQL: \n" + instrucaoSql);
     return database.executar(instrucaoSql);
 }
+function puxaremailexistentes() {
+    console.log("ACESSEI O USUARIO MODEL \n \n\t\t >> Se aqui der erro de 'Error: connect ECONNREFUSED',\n \t\t >> verifique suas credenciais de acesso ao banco\n \t\t >> e se o servidor de seu BD está rodando corretamente. \n\n function cadastrar():");
+
+    var instrucaoSql = `
+        select email from player;
+    `;
+    console.log("Executando a instrução SQL: \n" + instrucaoSql);
+    return database.executar(instrucaoSql);
+}
 
 module.exports = {
     autenticar,
@@ -197,6 +206,7 @@ module.exports = {
     inserirpost,
     obterpermissao,
     obterdadosforum,
-    atualizarvisibilidade
+    atualizarvisibilidade,
+    puxaremailexistentes
 
 };

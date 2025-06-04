@@ -9,7 +9,7 @@
     <title>Sudoku - Cadastro</title>
 </head>
 
-<body>
+<body onload="puxaremails()">
     <div class="pai-login-cadastro">
         <div class="icon-content">
             <a href="index.html"><img src="assets/Sudoku logo.png" alt="Sudoku-logo" class="img-config"></a>
@@ -84,6 +84,24 @@
 
 </html>
 <script>
+    var emails_exitentes = [];
+    function puxaremails() {
+        fetch(`/usuarios/puxaremailexistentes`, {
+            method: "GET",
+            headers: {
+                "Content-type": "application/json"
+            }
+        })
+            .then(data => {
+                return data.json();
+            })
+            .then(data => {
+                emails_exitentes = data;
+            })
+            .catch(error => {
+                console.log("Erro no catch:", error);
+            })
+    }
     function emailverify() {
         var email = ipt_email.value;
         if (email.includes("@") && email.includes(".com")) {

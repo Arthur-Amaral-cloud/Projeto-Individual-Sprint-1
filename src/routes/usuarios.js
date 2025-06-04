@@ -63,4 +63,7 @@ router.get(`/obterdadosforum`, function (req,res) {
 router.put("/atualizarvisibilidade", function (req,res) {
     usuarioController.atualizarvisibilidade(req,res);
 })
+router.get(`/puxaremailexistentes`, function (req,res) {
+    usuarioController.puxaremailexistentes(req,res);
+});
 module.exports = router;
