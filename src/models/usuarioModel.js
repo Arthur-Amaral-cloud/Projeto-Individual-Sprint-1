@@ -70,7 +70,7 @@ function obtermediaerro(idjogador) {
     console.log("ACESSEI O USUARIO MODEL \n \n\t\t >> Se aqui der erro de 'Error: connect ECONNREFUSED',\n \t\t >> verifique suas credenciais de acesso ao banco\n \t\t >> e se o servidor de seu BD está rodando corretamente. \n\n function cadastrar():", idjogador);
 
     var instrucaoSql = `
-        select truncate(avg(QtdErros),1) as 'media_erros' from LogJogos where FkPlayer = '${idjogador}'
+        select truncate(avg(QtdErros),1) as 'media_erros' from LogJogos where FkPlayer = '${idjogador}' and JogoFinalizado = '1';
     `;
     console.log("Executando a instrução SQL: \n" + instrucaoSql);
     return database.executar(instrucaoSql);

@@ -192,7 +192,7 @@ nav {
     height: 80px;
     width: 280px;
     background-color: var(--bg-main);
-    color: var(--color-txt);
+    color: var(--filled-color);
     border-radius: var(--border-radius);
     display: grid;
     place-items: center;

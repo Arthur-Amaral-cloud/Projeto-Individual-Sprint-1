@@ -288,6 +288,7 @@ const initNumberInputEvent = () => {
                     atualizartempo();
                     atualizarwin();
                     removeGameInfo();
+                    title_page.innerHTML = `Sudoku - Jogo Finalizado`;
                     showResult();
                 }
             }
@@ -378,6 +379,7 @@ document.querySelector('#btn-play').addEventListener('click', () => {
     win_game = '';
     total_erros = 0;
     tempoJogo = 0;
+    title_page.innerHTML = `Sudoku - Jogo em Andamento`;
     comecarjogoinsert();
     initSudoku();
     startGame();
@@ -396,17 +398,21 @@ document.querySelector('#btn-play').addEventListener('click', () => {
 // });
 
 document.querySelector('#btn-pause').addEventListener('click', () => {
+    title_page.innerHTML = `Sudoku - Jogo Pausado`;
     pause_screen.classList.add('active');
     pause = true;
 });
 document.querySelector('#btn-resume').addEventListener('click', () => {
+    title_page.innerHTML = `Sudoku - Jogo em Andamento`;
     pause_screen.classList.remove('active');
     pause = false;
 });
 document.querySelector('#btn-new-game').addEventListener('click', () => {
+    title_page.innerHTML = `Sudoku - Escolha a dificuldade`;
     returnStartScreen();
 });
 document.querySelector('#btn-new-game-2').addEventListener('click', () => {
+    title_page.innerHTML = `Sudoku - Escolha a dificuldade`;
     returnStartScreen();
 });
 
