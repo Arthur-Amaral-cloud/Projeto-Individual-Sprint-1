@@ -112,6 +112,13 @@
             div_error_email.innerHTML = `E-mail Invalído`
             div_error_email.style = `color:#ff6f61`;
         }
+        for(let i = 0; i < emails_exitentes.length; i++)
+        {
+            if (email == emails_exitentes[i].email) {
+            div_error_email.innerHTML = `E-mail já cadastrado`
+            div_error_email.style = `color:#ff6f61`;
+            }
+        }
     }
     function usernameverify() {
         var username = ipt_username.value;
@@ -230,6 +237,13 @@
         //Verificação Email
         if (email.includes("@") && email.includes(".com")) {
             ax_email = true;
+        }
+        for(let i = 0; i < emails_exitentes.length; i++)
+        {
+            if (email == emails_exitentes[i].email) {
+                ax_email = false;
+                break;
+            }
         }
         //Verificação Username
         if (username.length > 0 && username.length <= 45) {
