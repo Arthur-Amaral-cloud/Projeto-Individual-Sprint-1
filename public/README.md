@@ -1,7 +1,7 @@
 # Projeto Individual Sudoku 
 
 ## 🎯 Funcionalidades  
-- Geração de novos jogos via API  
+- Geração de novos jogos
 - Sistema de Cadastro e Login  
 - Ligação com Banco de dados para o save de dados  
 
